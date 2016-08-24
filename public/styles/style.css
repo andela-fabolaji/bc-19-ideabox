@@ -1,0 +1,110 @@
+/**
+ * BASIC PRESETS
+ */
+
+* {
+  margin: 0 auto;
+  padding: 0;
+}
+
+ul {
+  list-style: none; }
+
+li {
+  display: inline; }
+
+a {
+  text-decoration: none; }
+
+html, body {
+  text-align: center;
+  font-size: 100%;
+  -webkit-font-smoothing: antialaiased;
+  font-smoothing: antialaiased;
+}
+
+/**
+ * ERROR PAGE
+ */
+
+.four-o-four {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.page-not-found {
+    text-align: center;
+    background: #436fb7;
+    height: 55px;
+}
+
+.page-not-found, .header img {
+    height: 55px;
+}
+
+.page-error-msg {
+    width: 90%;
+}
+
+/**
+ * HOME HEADER
+ */
+
+ .header {
+    background: #436fb7;
+    height: 55px;   
+ }
+
+.header-content {
+    max-width: 1000px;
+ }
+
+ .header-content div img {
+    float: left;
+    margin-left: 5px;
+
+ }
+
+ .login-signup {
+    float: right;
+    height: 55px;
+    width: 120px;
+ }
+
+ .login-signup:hover {
+    background:#2e5699;
+ }
+
+.login-signup a {
+    text-decoration: none;
+    font-size: 0.8em;
+    color: #fff;
+    display: block;
+    margin-top: 18px;
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+
+
+@media (min-width: 768px) {
+    .four-o-four {
+        font-size: 200px;
+        font-weight: bold;
+    }
+
+    .page-not-found {
+        text-align: center;
+        background: #436fb7;
+        height: 55px;
+    }
+
+    .page-not-found img {
+        height: 55px;
+        width: 103px;
+    }
+}
+
+@media (min-width: 992px) {
+
+}
