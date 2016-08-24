@@ -134,8 +134,25 @@ html, body {
 }
 
 .side-board {
-    height:200px;
-    background:gray;
+    
+}
+
+.trending-ideas, .tags {
+    height: 65px;
+    width: 100%;
+    padding-top: 20px;
+    text-align: left;
+    border-bottom: 1px solid #e2e0e7;
+}
+
+.trending-ideas > span, .tags > span {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #436fb7;
+}
+
+.trending-ideas p, .tags p {
+    font-size: 0.8em;
 }
 
 
@@ -172,6 +189,11 @@ html, body {
 
     .herobg > p:nth-child(2) {
         font-size: 1.3em;
+    }
+
+    .trending-ideas {
+        height: 65px;
+        width: 100%;
     }
 }
 
