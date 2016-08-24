@@ -24,6 +24,18 @@ html, body {
 }
 
 /**
+ * IMPORT FONTS
+ */
+
+@font-face {
+  font-family: "Proreg";
+  src: url("../bootstrap-3.3.7/fonts/Proxima-Nova-Regular.otf") format("opentype"); }
+
+  @font-face {
+  font-family: "Probold";
+  src: url("../bootstrap-3.3.7/fonts/Proxima-Nova-Bold.otf") format("opentype"); }
+
+/**
  * ERROR PAGE
  */
 
@@ -57,6 +69,8 @@ html, body {
 
 .header-content {
     max-width: 1000px;
+    height: 55px;
+    background: #436fb7;
  }
 
  .header-content div img {
@@ -87,6 +101,45 @@ html, body {
 
 
 
+/**
+ * Hero bg 
+ */
+
+.herobg {
+    background: url("../images/home_banner.jpg") center no-repeat;
+    height: 200px;
+    width: 100%;
+    color: #fff;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-rigt: 10px;
+ }
+
+.herobg > p:first-child {
+    font-size: 2.0em;
+    font-family: Probold;    
+ }
+
+
+.herobg > p:nth-child(2) {
+    font-size: .8em;
+ }
+
+.main {
+    max-width: 1000px;
+}
+
+.idea-stream {
+    
+}
+
+.side-board {
+    height:200px;
+    background:gray;
+}
+
+
+
 @media (min-width: 768px) {
     .four-o-four {
         font-size: 200px;
@@ -102,6 +155,23 @@ html, body {
     .page-not-found img {
         height: 55px;
         width: 103px;
+    }
+
+    .herobg {
+        background: url("../images/home_banner.jpg") center no-repeat;
+        height: 240px;
+        width: 100%;
+        padding-top: 5px;
+    }
+
+    .herobg > p:first-child {
+        font-size: 4.0em;
+        font-family: Probold;    
+    }
+
+
+    .herobg > p:nth-child(2) {
+        font-size: 1.3em;
     }
 }
 
