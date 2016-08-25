@@ -7,7 +7,7 @@ var GlobalRequest = function () {
 
       beforeSend: function () {
         dom.addClass('disabled');
-        dom.children('.loader').attr("display", "block");
+        dom.children('.loader').show();
       },
 
       complete: function () {

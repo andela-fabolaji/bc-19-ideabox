@@ -135,7 +135,8 @@ form > div > label { font-size: 0.8em;}
 
 #signup {display: none;}
 
-.auth-msg {display: none;}
+.submit { width: 100%;}
+
 
 #signin .modal-body {min-height: 250px;}
 #signup .modal-body { min-height: 350px; }

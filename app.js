@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser')
 
 var app = express();
+var routes = require('./route/route');
 app.use(express.static(__dirname + '/public/'));
 app.use(express.static(__dirname + '/src/'));
 
@@ -21,6 +22,8 @@ app.get('/', function (req, res) {
 app.get('*', function (req, res) {
   res.sendFile(path + '404.html');
 });
+
+routes(app);
 
 // router.use(function (req, res, next) {
 //   console.log("/" + req.method);
