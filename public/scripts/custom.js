@@ -31,7 +31,7 @@ $(document).ready(function () {
       } else {
         var ajaxRes = newRequest.ajaxCall('POST', userDetails, '/signin', $(this));
         ajaxRes.done(function (res) {
-          if (res.status === 'false') {
+          if (res.status === true) {
             alert(res.msg);
           }
         });

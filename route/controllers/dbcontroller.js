@@ -36,27 +36,29 @@ var DbHandler = function () {
     this.executeQuery(query);
   }
 
-  this.signin = function (details, res) {
+  this.signin = function (details, response) {
     var query = "SELECT * FROM users WHERE email = '" + details.email + "'";
     this.connection.getConnection(function(err, connection) {
-      if (!err) {
-        if (result.length === 0) {
-          res.send('3');
-          res.json(status: false, message:'Invalid user id');
-        } else {
-          if (details.password === result[0].password) {
-            res.send('1')
-            res.json({status: true, message:'Welcome'});
+      
+      connection.query(query, function (err, res) {
+        if (!err) {
+          if(res.length === 0){
+            response.json({status:false, msg: 'User does not exist!'});  
           } else {
-            res.json({status:false, message:'Incorrect password'});
+            if (res[0].password === details.password) {
+              response.json({status:true, msg: 'Welcome!'});
+            } else {
+              response.json({status:false, msg: 'Invalid password'});
+            }
           }
+        } else {
+          response.json({status:false, msg: 'Unable to establish connection!'});
         }
-      } else {
-        res.json({status: false, message: 'Error connecting...'});
-      }
-      res.end();
+        response.end();
+      });
+      connection.release();  
     });
-    connection.release();
+
   };
 
   this.executeQuery = function (query) {
