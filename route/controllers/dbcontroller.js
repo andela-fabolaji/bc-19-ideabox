@@ -42,17 +42,21 @@ var DbHandler = function () {
       if (!err) {
         if (result.length === 0) {
           res.send('3');
+          res.json(status: false, message:'Invalid user id');
         } else {
-          if (true) {
+          if (details.password === result[0].password) {
             res.send('1')
+            res.json({status: true, message:'Welcome'});
           } else {
-            res.send('2');
+            res.json({status:false, message:'Incorrect password'});
           }
         }
       } else {
-        res.send('0');
+        res.json({status: false, message: 'Error connecting...'});
       }
-    })
+      res.end();
+    });
+    connection.release();
   };
 
   this.executeQuery = function (query) {
