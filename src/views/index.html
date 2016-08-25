@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ideabox | ...your idea is awesome</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+
+</head>
+<body>
+
+<script src="scripts/custom.js"></script>
+<script src="scripts/jquery-2.2.1.min.js"></script>
+<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+</body>
+
+<div class="container-fluid">
+    <div class="row header">
+        <div class="header-content">
+            <div><a href="/"><img src="images/ideabox_white.png"></a></div>
+            <div class="login-signup">
+                <a href="" data-toggle="modal" data-target="#login-modal">SIGN IN</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="herobg">
+            <p>Share awesome ideas!</p>
+            <p>We are a community of ideators and we are inspired by the desire to change our world!<br>We believe your ideas are awesome</p>
+            <!-- jumbotron -->
+            <a href="" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">Join the league</a>
+        </div>
+    </div>
+    <div id="login-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div id="signin">    
+                    <div class="modal-header">
+                        <h3>Sign in</h3>    
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" class="form-control">
+                            </div>
+                            <div class="checkbox"><label><input type="checkbox">Remember me</label></div>
+                            <button type="submit" class="btn btn-default pull-right">Submit</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">Don't have an account? <span class="signup">Sign up</span><br>Forgot password</div>  
+                </div>
+
+                <div id="signup">    
+                    <div class="modal-header">
+                        <h3><strong>Sign up</strong></h3>    
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Confirm Password</label>
+                                <input type="password" id="password" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-default pull-right">Submit</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">Don't have an account? <span class="signup">Sign up</span><br>Forgot password?</div>  
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="main">
+            <div class="col-sm-12 col-md-8 idea-stream">
+                
+                <!-- create an idea -->
+                  
+                <div class="post-idea">
+                    <textarea class="txt-area">Write an idea...</textarea>
+                    <button type="submit" class="btn btn-primary pull-right btn-custom">Post</button>
+                </div>
+                
+
+                <!-- idea stream loads here -->
+                <div class="post">
+                    
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 side-board">
+                <!-- side board here -->
+                <div class="trending-ideas">
+                    <span>Trending ideas</span>
+                    <p>Top upvoted ideas today</p>
+                </div>
+
+                <div class="tags">
+                    <span>Tags</span>
+                    <p>Most common idea tags on the block</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="row footer-wrapper">
+        <div class="footer">
+            <h6>Created with love by Abolaji Femi</h6>
+        </div>
+    </div> -->
+</div>
+
+
+</html>
