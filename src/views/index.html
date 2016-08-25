@@ -12,8 +12,9 @@
 </head>
 <body>
 
-<script src="scripts/custom.js"></script>
 <script src="scripts/jquery-2.2.1.min.js"></script>
+<script src="scripts/globalrequest.js"></script>
+<script src="scripts/custom.js"></script>
 <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
 </body>
 
@@ -39,7 +40,7 @@
             <div class="modal-content">
                 <div id="signin">    
                     <div class="modal-header">
-                        <h3>Sign in</h3>    
+                        <h3><strong>Sign in</strong></h3>    
                     </div>
                     <div class="modal-body">
                         <form>
@@ -52,7 +53,7 @@
                                 <input type="password" id="password" class="form-control">
                             </div>
                             <div class="checkbox"><label><input type="checkbox">Remember me</label></div>
-                            <button type="submit" class="btn btn-default pull-right">Sign in&nbsp;<img class="loader" src="images/loader.gif"></button>
+                            <button id="signinBtn" class="btn btn-default pull-right submit">Sign in&nbsp;<img class="loader" src="images/loader.gif"></button>
                         </form>
                         <span class="label label-danger auth-msg">Incorrect password</span>
                     </div>
@@ -66,18 +67,22 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" class="form-control">
+                                <label for="fullname">Fullname <small>As in "John Doe"</small> *</label>
+                                <input type="text" id="fullname" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" id="password" class="form-control">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="regemail" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="password">Confirm Password</label>
-                                <input type="password" id="password" class="form-control">
+                                <label for="password">Password *</label>
+                                <input type="password" id="regpassword" class="form-control">
                             </div>
-                            <button type="submit" class="btn btn-default pull-right">Create my account&nbsp;<img class="loader" src="images/loader.gif"></button>
+                            <div class="form-group">
+                                <label for="password">Confirm Password *</label>
+                                <input type="password" id="confirmpassword" class="form-control">
+                            </div>
+                            <button id="signupBtn" class="btn btn-default pull-right submit">Create my account&nbsp;<img class="loader" src="images/loader.gif"></button>
                         </form>
                     </div>
                     <div class="modal-footer">Have an account already? <span class="signin"><a>Sign in</a></span></div>  
