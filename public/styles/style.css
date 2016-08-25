@@ -107,7 +107,7 @@ html, body {
 
 .herobg {
     background: url("../images/home_banner.jpg") center no-repeat;
-    height: 200px;
+    height: 240px;
     width: 100%;
     color: #fff;
     padding-top: 10px;
@@ -116,7 +116,7 @@ html, body {
 }
 
 .herobg > p:first-child {
-    font-size: .2em;
+    font-size: 2em;
     font-family: Probold;    
 }
 

@@ -26,15 +26,15 @@ $(document).ready(function () {
       var userDetails = newRequest.formData(formFields);
       var returnMsgField = $(this).parents('.modal-body').children('.auth-msg');
       
-      if (userDetails === 'null') {
-        alert('1');
-        returnMsgField.text() = 'All fields are compulsory';
-      } else if(userDetails.fullname.split(' ').length < 2) {
-        alert('2')
-        returnMsgField.text() = 'Your fullname is required';
+      if (userDetails === null) {
+        returnMsgField.text('All fields are compulsory').addClass('label label-danger'); 
       } else {
-        alert('3');
         var ajaxRes = newRequest.ajaxCall('POST', userDetails, '/signin', $(this));
+        ajaxRes.done(function (res) {
+          if (res.status === true) {
+            alert(res.msg);
+          }
+        });
       }
     }
 
@@ -49,7 +49,7 @@ $(document).ready(function () {
         returnMsgField.text('Your fullname is required').addClass('label label-danger'); 
       } else {
         var ajaxRes = newRequest.ajaxCall('POST', userDetails, '/signup', $(this));
-        ajaxRes.done(function(res) {
+        ajaxRes.done(function (res) {
           if (res === '1') {
             returnMsgField.addClass('label label-success');
             returnMsgField.text('Account successfully created');
