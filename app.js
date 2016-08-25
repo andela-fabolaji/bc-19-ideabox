@@ -23,18 +23,3 @@ app.use("*", function (req, res) {
 app.listen(3000, function () {
   console.log("Server running at Port 3000");
 });
-
-// var express = require('express');
-// var app = express();
-// var port = 3000
-
-// app.use(express.static('public'));
-// app.use(express.static('src/views'));
-
-// app.get('/', function (req, res) {
-//   //res.send(views + '404.html');
-// });
-
-// app.listen(port, function (err) {
-//   console.log('Server running at ', port);
-// });

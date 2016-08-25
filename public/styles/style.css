@@ -131,14 +131,17 @@ html, body {
 
 #signin h3, #signup h3 { color: #436fb7;}
 
-#signin {display: none;}
+#signup {display: none;}
+
+.auth-msg {display: none;}
 
 .modal-body {
     min-height: 300px;
 }
 
 .modal-footer { text-align: center; }
-.signup { color: #436fb7;}
+.signup, .signin { color: #436fb7; cursor: pointer;}
+img.loader { height: 15px; width: 15px; display: none;}
 
 .main {
     max-width: 1000px;
