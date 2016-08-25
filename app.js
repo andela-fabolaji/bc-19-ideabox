@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var router = express.Router();
-var path = __dirname + "/views/";
+var path = __dirname + "/src/views/";
 
 
 router.use(function (req, res, next) {

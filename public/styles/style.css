@@ -113,29 +113,99 @@ html, body {
     padding-top: 10px;
     padding-left: 10px;
     padding-rigt: 10px;
- }
+}
 
 .herobg > p:first-child {
-    font-size: 2.0em;
+    font-size: .2em;
     font-family: Probold;    
- }
+}
 
 
 .herobg > p:nth-child(2) {
     font-size: .8em;
- }
+}
+
+#signin form label, #signin h3, #signup form label, #signup h3 {
+    float:left;
+}
+
+#signin h3, #signup h3 { color: #436fb7;}
+
+#signup {display: none;}
+
+.auth-msg {display: none;}
+
+.modal-body {
+    min-height: 300px;
+}
+
+.modal-footer { text-align: center; }
+.signup, .signin { color: #436fb7; cursor: pointer;}
+img.loader { height: 15px; width: 15px; display: none;}
 
 .main {
     max-width: 1000px;
 }
 
 .idea-stream {
+    /*max-width: 587px;*/
+    height: 300px;
+}
+
+.post-idea {
+    width: 100%;
+}
+
+textarea.txt-area {
+    width: 100%;
+    min-height: 65px;
+    resize: none;
+    margin-top: 25px;
+    outline: none;
+    border: 1px solid #e2e0e7;
+    border-radius: 3px;
+    moz-border-radius: 3px;
+    o-border-radius: 3px;
+    padding: 5px;
+    font-family: Proreg;
+    color: #a3a3a3;
+}
+
+textarea.txt-area:focus {
+    border: 2px solid #e2e0e7;
+    color: #000;
+}
+
+.btn-custom {
+    width: 100%;
+}
+
+
+.side-board {
     
 }
 
-.side-board {
-    height:200px;
-    background:gray;
+.trending-ideas, .tags {
+    height: 65px;
+    width: 100%;
+    padding-top: 20px;
+    text-align: left;
+    border-bottom: 1px solid #e2e0e7;
+}
+
+.trending-ideas > span, .tags > span {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #436fb7;
+}
+
+.trending-ideas p, .tags p {
+    font-size: 0.8em;
+    color: #adadad;
+}
+
+.footer {
+    bottom: 0;
 }
 
 
@@ -172,6 +242,11 @@ html, body {
 
     .herobg > p:nth-child(2) {
         font-size: 1.3em;
+    }
+
+    .trending-ideas {
+        height: 65px;
+        width: 100%;
     }
 }
 
