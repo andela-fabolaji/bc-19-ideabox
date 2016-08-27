@@ -93,7 +93,8 @@ $(document).ready(function () {
       var commentDetails = {};
       commentDetails.user_comment = $(this).siblings('.commentText').val();
       commentDetails.ideas_id = $(this).siblings('.ideaId').val();
-
+      var commentdom = $(this).siblings('ul');
+      var ideaId = $(this).siblings('.ideaId').val();
       if (commentDetails.user_comment === '') {
         alert('Comment box cannot be empty');
       } else {
@@ -101,9 +102,9 @@ $(document).ready(function () {
         ajaxRes.done(function (res) {
           console.log(res);
           if(res == 1) {
-            location.reload();
+            fetchComments(commentdom, ideaId);
           } else {
-            alert('Unable to post comment. Please try again.')
+            alert('Unable to post comment.+ Please try again.')
           }
         });
       }
@@ -112,14 +113,17 @@ $(document).ready(function () {
   });
 
 $('.viewcomments').click(function() {
-  var ajaxRes = newRequest.ajaxCall('GET', {}, '/getcomments/'+$(this).attr('id'), $(this));
   var commentdom = $(this).parents('.post-votes').siblings('.post-comment').find('ul');
+  fetchComments(commentdom, $(this).attr('id'));
+})
+
+function fetchComments(commentdom, ideaId) {
+  var ajaxRes = newRequest.ajaxCall('GET', {}, '/getcomments/'+ideaId, $('.commentBtn'));
   ajaxRes.done(function(comments) {
     commentdom.empty();
     for(key in comments){
       commentdom.append('<li>'+comments[key].user_comment+'<h6>'+comments[key].firstname+' '+comments[key].lastname+'</h6></li>')
     }
   })
-})
-
+}
 });
