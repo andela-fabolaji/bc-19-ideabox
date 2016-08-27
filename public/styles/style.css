@@ -67,43 +67,62 @@ body {
  * HOME HEADER
  */
 
- .header {
+.header {
     background: #436fb7;
     height: 55px;   
- }
+}
 
 .header-content {
     max-width: 1000px;
     height: 55px;
     background: #436fb7;
- }
+}
 
- .header-content div img {
+.header-content div img {
     float: left;
     margin-left: 5px;
+}
 
- }
-
- .login-signup {
+.login-signup {
     float: right;
-    height: 55px;
     width: 120px;
- }
+}
 
- .login-signup:hover {
+.login-signup:hover {
     background:#2e5699;
- }
+}
 
 .login-signup a {
     text-decoration: none;
     font-size: 0.8em;
     color: #fff;
     display: block;
-    margin-top: 18px;
+    padding-top: 18px;
     margin-right: 5px;
     font-weight: bold;
+    height: 55px;
 }
 
+.logout {
+    height: 55px;
+    float: right;
+}
+
+.logout li a {
+    display: block;
+    width: 120px;
+    float: right;
+    height: 55px;
+    text-decoration: none;
+    font-size: 0.8em;
+    color: #fff;
+    padding-top: 18px;
+}
+
+.logout li a:hover {
+    background:#2e5699;
+    cursor: pointer;
+}
 
 
 /**
@@ -319,6 +338,10 @@ textarea.txt-area:focus {
     margin-top: 5px;
 }
 
+a#upvote, a#downvote {
+    cursor: pointer;
+}
+
 .side-board {
     
 }
@@ -387,6 +410,29 @@ textarea.txt-area:focus {
     color: #7b7b7b;
     cursor: pointer
 }
+
+.about {
+    width: 100%;
+    font-size: 0.8em;
+    color:#848484;
+    text-align: left;
+    padding-top: 20px;
+}
+
+.about .about-content, .about .about-footer {
+    padding-top: 10px;
+}
+
+.about .about-header {
+    border-bottom: 1px solid #e2e0e7;
+    height: 30px;
+    font-weight: bold;
+    color: #436fb7;
+}
+
+.about .about-content { border-bottom: 1px solid #e2e0e7; padding-bottom: 10px; }
+
+
 
 
 

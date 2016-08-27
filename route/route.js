@@ -32,11 +32,11 @@ var routes = function(app) {
  apiRoutes.use(function (req, res, next) {
     var token = req.body.token || req.query.q || req.headers['token-information'];
     if (token) {
-      jwt.verify(token, 'key', function (err, decoded) {
+      jwt.verify(token, 'key', function (err, tokenvalue) {
         if (err) {
           return res.json({status: false, msg: 'Unable to authenticate token.'});
         } else {
-          req.decoded = decoded;
+          req.tokenvalue = tokenvalue;
         }
       });
     } else {
@@ -45,8 +45,29 @@ var routes = function(app) {
     next();
   });
 
+
+
   app.use('/', apiRoutes);
   app.use('/handler', apiRoutes);
+
+  app.post('/publish', function (req, res) {
+    var data = req.body;
+    var details = {idea_title:data.postTitle, idea_desc:data.postContent,users_id:req.tokenvalue.id};
+    var query = dBase.insertQuery('ideas', details, res);
+    dBase.executeQuery(query);
+  });
+
+  app.post('/comment', function (req, res) {
+    var data = req.body;
+    var details = {user_comment:data.user_comment, ideas_id:data.ideas_id, users_id:req.tokenvalue.id};
+    var query = dBase.insertQuery('comments', details, res);
+    dBase.executeQuery(query);
+  });
+
+  app.get('/getcomments/:ideaId', function (req, res) {
+    var query = "SELECT * FROM comments, users WHERE users_id = users.id AND ideas_id = "+req.params.ideaId
+    dBase.getQueryData(query, res);
+  });
 
 }
 

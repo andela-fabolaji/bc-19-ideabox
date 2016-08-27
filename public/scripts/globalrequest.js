@@ -4,7 +4,9 @@ var GlobalRequest = function () {
       type: method,
       url : url,
       data : data,
-
+      headers:{
+        'token-information':window.localStorage.getItem('authtoken')
+      },
       beforeSend: function () {
         dom.addClass('disabled');
         dom.children('.loader').show();

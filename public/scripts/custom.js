@@ -1,8 +1,12 @@
 $(document).ready(function () {
+
+  var newRequest = new GlobalRequest();
+
   var signup = $('#signup');
   var signin = $('#signin');
   var signupLink = $('.signup');
   var signinLink = $('.signin');
+  var submit = $('.submit');
 
   signupLink.click(function () {
     signin.css('display', 'none');
@@ -14,9 +18,7 @@ $(document).ready(function () {
     signup.css('display', 'none');
   });
 
-  var newRequest = new GlobalRequest();
-
-  var submit = $('.submit');
+  
   submit.click(function (e) {
 
     e.preventDefault();
@@ -70,7 +72,54 @@ $(document).ready(function () {
       }
     }
 
+    if ($(this).attr('id') === 'publish') {
+      var formFields = ['postTitle', 'postContent'];
+      var postDetails = newRequest.formData(formFields);
+      if (postDetails === null) {
+        alert('Post must contain a title and a description');
+      } else {
+        var ajaxRes = newRequest.ajaxCall('POST', postDetails, '/publish', $(this));
+        ajaxRes.done(function (res) {
+          alert(res);
+          if(res === 1) {
+            alert('shouldreload')
+            location.reload();
+          }
+        });
+      }
+    }
+
+    if ($(this).hasClass('commentbtn')) {
+      var commentDetails = {};
+      commentDetails.user_comment = $(this).siblings('.commentText').val();
+      commentDetails.ideas_id = $(this).siblings('.ideaId').val();
+
+      if (commentDetails.user_comment === '') {
+        alert('Comment box cannot be empty');
+      } else {
+        var ajaxRes = newRequest.ajaxCall('POST', commentDetails, '/comment', $(this));
+        ajaxRes.done(function (res) {
+          console.log(res);
+          if(res == 1) {
+            location.reload();
+          } else {
+            alert('Unable to post comment. Please try again.')
+          }
+        });
+      }
+    }
 
   });
+
+$('.viewcomments').click(function() {
+  var ajaxRes = newRequest.ajaxCall('GET', {}, '/getcomments/'+$(this).attr('id'), $(this));
+  var commentdom = $(this).parents('.post-votes').siblings('.post-comment').find('ul');
+  ajaxRes.done(function(comments) {
+    commentdom.empty();
+    for(key in comments){
+      commentdom.append('<li>'+comments[key].user_comment+'<h6>'+comments[key].firstname+' '+comments[key].lastname+'</h6></li>')
+    }
+  })
+})
 
 });
