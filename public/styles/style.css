@@ -23,6 +23,11 @@ html, body {
   font-smoothing: antialaiased;
 }
 
+body {
+    background: #efefef;
+    padding-bottom: 50px;
+}
+
 /**
  * IMPORT FONTS
  */
@@ -147,67 +152,240 @@ img.loader { height: 15px; width: 15px; display: none;}
 
 .main {
     max-width: 1000px;
+    margin-top: 20px;
 }
 
 .idea-stream {
-    /*max-width: 587px;*/
-    height: 300px;
+
+}
+
+.post-idea, .post {
+    width: 100%;
 }
 
 .post-idea {
+    border-radius: 3px;
+    background: #fff;
+    padding: 10px;
+}
+
+.post-idea span {
+    font-size: 0.7em;
+    float: left;
+    position: relative;
+    top: 15px;
+    margin-left: 5px;
+    color: #bababa;
+}
+
+input.post-title {
     width: 100%;
+    padding: 5px;
+    font-family: Probold;
+    font-size: 1.5em;
+    outline: none;
+    border: 0;
+    border-bottom: 1px solid #e2e0e7;
 }
 
 textarea.txt-area {
     width: 100%;
+    margin-top: 10px;
     min-height: 65px;
     resize: none;
-    margin-top: 25px;
     outline: none;
-    border: 1px solid #e2e0e7;
-    border-radius: 3px;
-    moz-border-radius: 3px;
-    o-border-radius: 3px;
+    border: 0;
     padding: 5px;
     font-family: Proreg;
     color: #a3a3a3;
 }
 
 textarea.txt-area:focus {
-    border: 2px solid #e2e0e7;
     color: #000;
 }
 
 .btn-custom {
-    width: 100%;
+    margin-top: 5px;
+    width: 70px;
+    padding: 5px;
+    float: left;
 }
 
+.post {
+    margin-top: 20px;
+    padding-bottom: 20px;
+    /*border: 2px solid #e2e0e7;*/
+    border: 2px solid #fff;
+    border-radius: 3px;
+    moz-border-radius: 3px;
+    o-border-radius: 3px;
+    font-family: Proreg;
+    background: #fff;
+}
+
+.post:hover .post-content {
+    background: #f2f2f2;
+}
+
+.post:hover {
+    /*background: #f9f9f9;*/
+    /*background: #dfe;*/
+    /*background: #ebfaf3;*/
+    /*background: #f4f8f6;*/
+    /*border: 2px solid #436fb7;*/
+    box-shadow: 0 1px 7px 1px rgba(0,0,0,0.08);
+}
+
+.post > div.post-header, div.post-content {
+    width: 95%;
+    min-height: 40px;
+    text-align: left;
+}
+
+.post .post-header {
+    /*border-bottom: 1px solid #e2e0e7;*/
+}
+
+.post h2 { font-weight: bold;}
+
+.post .post-content {
+    border: 1px solid #e2e0e7;
+    padding: 10px;
+    border-radius: 3px;
+    background: #fafafa;
+    transition: ease-in-out all 0.3s;
+}
+
+.post .read-more {
+    position: relative;
+    float: right;
+    width: 70px;
+    /*border: 2px solid #e2e0e7;*/
+    border-top-right-radius: 3px;
+    text-align: center;
+    padding-top: 10px;
+    font-style: italic;
+    font-size: 0.7em;
+    color: #bababa;
+}
+
+.post .read-more:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #7b7b7b;
+}
+
+.post-tags {
+    width: 95%;
+    text-align: left;
+}
+
+.post-tags span.tag-ico {
+    color: #436fb7;
+}
+
+.post-tags span.tag-list {
+    font-size: 0.7em;
+    color: #436fb7;
+}
+
+.post-votes { 
+    width: 95%;
+    margin-top: 10px;
+    text-align: left;
+    font-size: 0.8em;
+    color: #436fb7;
+}
+
+.post-comment {
+    width: 95%;
+    margin-top: 10px;
+    text-align: left;
+    font-size: 0.8em;
+}
+
+.post-comment li {
+    display: block;
+    border-bottom: 1px solid #e2e0e7;
+    background: #f2f2f2;
+    padding: 5px;
+}
+
+.post-comment li h6 {
+    color: #436fb7;
+}
+
+.btn-comment {
+    margin-top: 5px;
+}
 
 .side-board {
     
 }
 
-.trending-ideas, .tags {
-    height: 65px;
-    width: 100%;
+.trending-ideas, .tag-holder {
     padding-top: 20px;
+    width: 100%;
     text-align: left;
     border-bottom: 1px solid #e2e0e7;
 }
 
-.trending-ideas > span, .tags > span {
+.trending-ideas > span.trend-header, .tag-holder span.tag-header {
     font-size: 0.9em;
     font-weight: bold;
     color: #436fb7;
 }
 
-.trending-ideas p, .tags p {
+.trending-ideas p, .tag-holder p {
     font-size: 0.8em;
-    color: #adadad;
+    color: #131313;
 }
 
-.footer {
-    bottom: 0;
+.trend {
+    width: 100%;
+    border-radius: 3px;
+    background: #fff;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1em;
+}
+
+.trend:hover span.trend-title {
+    color: #436fb7;
+    cursor: pointer;
+}
+
+.trend:hover { cursor: pointer;}
+
+.trend span.trend-title {
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.trend span.trend-content {
+    font-size: 0.8em;
+}
+
+.tag-wrapper {text-align: left;}
+
+.tag-ico { color: #bbbbbb; font-size: 0.8em;}
+
+.tags {
+    display: inline-block;
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 3px;
+    background: #c7c7c7;
+    font-size: 0.8em;
+    color: #f8f8f8;
+    margin-top: 10px;
+}
+
+.tags:hover {
+    background: #fff;
+    color: #7b7b7b;
+    cursor: pointer
 }
 
 

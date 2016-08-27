@@ -12,12 +12,6 @@
 </head>
 <body>
 
-<script src="scripts/jquery-2.2.1.min.js"></script>
-<script src="scripts/globalrequest.js"></script>
-<script src="scripts/custom.js"></script>
-<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
-</body>
-
 <div class="container-fluid">
     <div class="row header">
         <div class="header-content">
@@ -31,7 +25,7 @@
         <div class="herobg">
             <p>Share awesome ideas!</p>
             <p>We are a community of ideators and we are inspired by the desire to change our world!<br>We believe your ideas are awesome</p>
-            <!-- jumbotron -->
+            
             <a href="" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">Join the league</a>
         </div>
     </div>
@@ -83,7 +77,8 @@
                                 <input type="password" id="confirmpassword" class="form-control">
                             </div>
                             <button id="signupBtn" class="btn btn-default pull-right submit">Create my account&nbsp;<img class="loader" src="images/loader.gif"></button>
-                        </form><span class="label auth-msg"></span>
+                        </form>
+                        <span class="label auth-msg"></span>
                     </div>
                     <div class="modal-footer">Have an account already? <span class="signin"><a>Sign in</a></span></div>  
                 </div>
@@ -93,40 +88,66 @@
     <div class="row">
         <div class="main">
             <div class="col-sm-12 col-md-8 idea-stream">
-                
-                <!-- create an idea -->
-                  
-                <div class="post-idea">
-                    <textarea class="txt-area">Write an idea...</textarea>
-                    <button type="submit" class="btn btn-primary pull-right btn-custom">Post</button>
-                </div>
-                
-
                 <!-- idea stream loads here -->
-                <div class="post">
-                    
+
+                <% ideas.forEach(function(eachIdea){ %>
+                    <div class="post">
+                    <div class="read-more">Read More</div>
+                    <div class="post-header"><h2><%= eachIdea.idea_title %></h2></div>
+                    <div class="post-tags">
+                        <!-- <span class="glyphicon glyphicon-tag tag-ico" aria-hidden="true"></span>
+                        <span class="tag-list">Education, Andela, Innovation, World Class</span> -->
+                    </div>
+                    <div class="post-content"><%= eachIdea.idea_desc %></div>
                 </div>
+                <% }); %>
+
+                
             </div>
+
             <div class="col-sm-12 col-md-4 side-board">
                 <!-- side board here -->
-                <div class="trending-ideas">
-                    <span>Trending ideas</span>
+                <div class="trending-ideas clearfix">
+                    <span class="trend-header">Trending</span>
+                    <span class="glyphicon glyphicon-leaf tag-ico" aria-hidden="true"></span>
                     <p>Top upvoted ideas today</p>
                 </div>
+                <div class="trend">
+                    <span class="trend-title">Trend title</span><br>
+                    <span class="trend-content">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span>
+                </div>
+                
+                <div class="trend">
+                    <span class="trend-title">Trend title</span><br>
+                    <span class="trend-content">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span>
+                </div>
 
-                <div class="tags">
-                    <span>Tags</span>
-                    <p>Most common idea tags on the block</p>
+                <div class="trend">
+                    <span class="trend-title">Trend title</span><br>
+                    <span class="trend-content">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span>
+                </div>
+
+                <div class="tag-holder">
+                    <span class="tag-header">Tags</span>
+                    <span class="glyphicon glyphicon-tag tag-ico" aria-hidden="true"></span>
+                    <p>Popular idea tags on the block</p>
+                </div>
+                <div class="tag-wrapper">
+                    <span class="tags">Education</span>
+                    <span class="tags">Andela</span>
+                    <span class="tags">Learning</span>
+                    <span class="tags">World Class</span>
+                    <span class="tags">Innovation</span>
+                    <span class="tags">Technology</span>
                 </div>
             </div>
         </div>
     </div>
-    <!-- <div class="row footer-wrapper">
-        <div class="footer">
-            <h6>Created with love by Abolaji Femi</h6>
-        </div>
-    </div> -->
 </div>
-
-
+<script src="scripts/jquery-2.2.1.min.js"></script>
+<script src="scripts/globalrequest.js"></script>
+<script src="scripts/custom.js"></script>
+<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script src="scripts/markdown-it.min.js"></script>
+</body>
 </html>

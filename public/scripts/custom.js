@@ -32,7 +32,14 @@ $(document).ready(function () {
         var ajaxRes = newRequest.ajaxCall('POST', userDetails, '/signin', $(this));
         ajaxRes.done(function (res) {
           if (res.status === true) {
-            alert(res.msg);
+            window.localStorage.setItem('authtoken', res.authtoken);
+            window.location.href = '/home?q='+window.localStorage.getItem('authtoken');
+            /*var redir = newRequest.getNewPage('/home');
+            redir.done(function(page) {
+              $('html').html(page);
+            })*/
+          } else {
+            //invalid user
           }
         });
       }
@@ -50,9 +57,11 @@ $(document).ready(function () {
       } else {
         var ajaxRes = newRequest.ajaxCall('POST', userDetails, '/signup', $(this));
         ajaxRes.done(function (res) {
-          if (res === '1') {
-            returnMsgField.addClass('label label-success');
+          if (res.status === true) {
+            returnMsgField.removeClass('label-danger').addClass('label label-success');
             returnMsgField.text('Account successfully created');
+            window.localStorage.setItem('authtoken', res.authtoken);
+            window.location.href = '/home?q='+window.localStorage.getItem('authtoken');
           } else {
             returnMsgField.addClass('label label-danger');
             returnMsgField.text('Process terminated. Unable to create account');
