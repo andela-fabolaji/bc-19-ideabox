@@ -102,9 +102,19 @@ var DbHandler = function () {
     });
   };
 
+  this.getQueryData = function(query, response) {
+    this.connection.getConnection(function (err, connection) {
+      connection.query(query, function (err, result) {
+        response.json(result);
+        response.end();
+      });
+      connection.release();
+    });
+  }
+
   this.getIdeas = function (response) {
-    var sorter = 'idea_date_time'
-    var query = 'SELECT * FROM ideas, users WHERE users.id = users_id ORDER BY ' + this.connection.escapeId('ideas.' + sorter);
+    var sorter = 'date';
+    var query = 'SELECT *, ideas.id AS ideaId FROM ideas, users WHERE users.id = users_id ORDER BY ' + this.connection.escapeId('ideas.' + sorter) + ' DESC';
     this.connection.getConnection(function (err, connection) {
       connection.query(query, function (err, result) {
         if (!err) {
@@ -119,8 +129,14 @@ var DbHandler = function () {
             msg: 'Unable to secure connection, please try again'
           });
         }
+        response.end()
       });
     });
+  };
+
+  this.getComments = function (response) {
+    var sorter = 'comment_date_time';
+    var query = 'SELECT * FROM comments '
   };
 
 };

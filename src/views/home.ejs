@@ -15,9 +15,12 @@
 <div class="container-fluid">
     <div class="row header">
         <div class="header-content">
-            <div><a href="/"><img src="images/ideabox_white.png"></a></div>
-            <div class="login-signup">
-                <a href="" data-toggle="modal" data-target="#login-modal">LOG OUT</a>
+            <div><a href="/home"><img src="images/ideabox_white.png"></a></div>
+            <div class="logout">
+                <ul>
+                    <li><a>LOG OUT</a></li>
+                    <li><a>PROFILE</a></li>
+                </ul>
             </div>
         </div>
     </div>
@@ -29,9 +32,9 @@
                   
                 <div class="post-idea clearfix">
                     <form>
-                        <input class="post-title" type="text" placeholder="idea title">
-                        <textarea class="txt-area" placeholder="Write your awesome..."></textarea>
-                    <button type="submit" class="btn btn-primary btn-custom">Publish</button><span>Markdown syntax enalbed.</span>
+                        <input class="post-title" type="text" placeholder="idea title" id="postTitle">
+                        <textarea id="postContent" class="txt-area" placeholder="Write your awesome..."></textarea>
+                    <button class="btn btn-primary btn-custom submit" id="publish">Publish</button><span>Markdown syntax enalbed.</span>
                     </form>
                     
                 </div>
@@ -42,29 +45,23 @@
                     <div class="read-more">Read More</div>
                     <div class="post-header"><h2><%= eachIdea.idea_title %></h2></div>
                     <div class="post-tags">
-                        <span><h5>Posted by <strong><%=eachIdea.lastname + ' ' + eachIdea.firstname%></strong> at <%=eachIdea.idea_date_time%></h5></span>
+                        <span><h6>Posted by <strong><%=eachIdea.lastname + ' ' + eachIdea.firstname%></strong> on <%= new Date(eachIdea.date).getDate() + ' - ' + parseInt(new Date(eachIdea.date).getMonth()+1)+' - '+ new Date(eachIdea.date).getFullYear() + ' at ' + new Date(eachIdea.date).getHours() +' : ' + new Date(eachIdea.date).getMinutes() +' : '+ new Date(eachIdea.date).getSeconds()%></h6></span>
                         <span class="glyphicon glyphicon-tag tag-ico" aria-hidden="true"></span>
                         <span class="tag-list">Education, Andela, Innovation, World Class</span>
                     </div>
                     <div class="post-content"><%= eachIdea.idea_desc %></div>
                     <div class="post-votes">
-                        <span class="glyphicon glyphicon-thumbs-up tag-ico" aria-hidden="true"></span> <%= eachIdea.upvotes %>
-                        <span class="glyphicon glyphicon-thumbs-down tag-ico" aria-hidden="true"></span>  <%= eachIdea.downvotes %>
-                        <span class="glyphicon glyphicon-comment tag-ico" aria-hidden="true"></span>  
+                        <a href="" id="upvote"><span class="glyphicon glyphicon-thumbs-up tag-ico" aria-hidden="true"></span></a> <%= eachIdea.upvotes %>
+                        <a href="" id="downvote"><span class="glyphicon glyphicon-thumbs-down tag-ico" aria-hidden="true"></span></a>  <%= eachIdea.downvotes %>
+                        <span class="glyphicon glyphicon-comment tag-ico" aria-hidden="true"></span> <span class="viewcomments" id="<%= eachIdea.ideaId %>">View comments</span>
                     </div>
                     <div class="post-comment">
-                        <ul>
-                            <li>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                <h6>- Jane Doe</h6>
-                            </li>
-                            <li>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                <h6>- Jane Doe</h6>
-                            </li>
-                        </ul>
-                        <input type="text" class="post-title" placeholder="Write a comment">
-                        <button type="submit" class="btn btn-primary btn-comment">Comment</button>
+                         <ul>
+                        
+                        </ul> 
+                        <input type="text" class="commentText post-title" placeholder="Write a comment">
+                        <input type="hidden" class="ideaId" value="<%=eachIdea.ideaId%>">
+                        <button class="commentbtn submit btn btn-primary btn-comment">Comment</button>
                     </div>
                 </div>
                 <% }); %>
@@ -105,6 +102,11 @@
                     <span class="tags">World Class</span>
                     <span class="tags">Innovation</span>
                     <span class="tags">Technology</span>
+                </div>
+                <div class="about">
+                    <div class="about-header">About Ideabox</div>
+                    <div class="about-content">Ideabox is an interactive social platform that connects people around the world to ingenous ideas.</div>
+                    <div class="about-footer">Created by Abolaji Femi (Andela BC-19)</div>
                 </div>
             </div>
         </div>
