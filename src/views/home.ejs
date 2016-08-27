@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ideabox</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row header">
+        <div class="header-content">
+            <div><a href="/"><img src="images/ideabox_white.png"></a></div>
+            <div class="login-signup">
+                <a href="" data-toggle="modal" data-target="#login-modal">LOG OUT</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="main">
+            <div class="col-sm-12 col-md-8 idea-stream">
+                
+                <!-- create an idea -->
+                  
+                <div class="post-idea clearfix">
+                    <form>
+                        <input class="post-title" type="text" placeholder="idea title">
+                        <textarea class="txt-area" placeholder="Write your awesome..."></textarea>
+                    <button type="submit" class="btn btn-primary btn-custom">Publish</button><span>Markdown syntax enalbed.</span>
+                    </form>
+                    
+                </div>
+                
+                <!-- idea stream loads here -->
+                <% ideas.forEach(function(eachIdea){ %>
+                    <div class="post">
+                    <div class="read-more">Read More</div>
+                    <div class="post-header"><h2><%= eachIdea.idea_title %></h2></div>
+                    <div class="post-tags">
+                        <span><h5>Posted by <strong><%=eachIdea.lastname + ' ' + eachIdea.firstname%></strong> at <%=eachIdea.idea_date_time%></h5></span>
+                        <span class="glyphicon glyphicon-tag tag-ico" aria-hidden="true"></span>
+                        <span class="tag-list">Education, Andela, Innovation, World Class</span>
+                    </div>
+                    <div class="post-content"><%= eachIdea.idea_desc %></div>
+                    <div class="post-votes">
+                        <span class="glyphicon glyphicon-thumbs-up tag-ico" aria-hidden="true"></span> <%= eachIdea.upvotes %>
+                        <span class="glyphicon glyphicon-thumbs-down tag-ico" aria-hidden="true"></span>  <%= eachIdea.downvotes %>
+                        <span class="glyphicon glyphicon-comment tag-ico" aria-hidden="true"></span>  
+                    </div>
+                    <div class="post-comment">
+                        <ul>
+                            <li>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                <h6>- Jane Doe</h6>
+                            </li>
+                            <li>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                <h6>- Jane Doe</h6>
+                            </li>
+                        </ul>
+                        <input type="text" class="post-title" placeholder="Write a comment">
+                        <button type="submit" class="btn btn-primary btn-comment">Comment</button>
+                    </div>
+                </div>
+                <% }); %>
+                
+            </div>
+
+            <div class="col-sm-12 col-md-4 side-board">
+                <!-- side board here -->
+                <div class="trending-ideas clearfix">
+                    <span class="trend-header">Trending</span>
+                    <span class="glyphicon glyphicon-leaf tag-ico" aria-hidden="true"></span>
+                    <p>Top upvoted ideas today</p>
+                </div>
+                <div class="trend">
+                    <span class="trend-title">Trend title</span><br>
+                    <span class="trend-content">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span>
+                </div>
+                
+                <div class="trend">
+                    <span class="trend-title">Trend title</span><br>
+                    <span class="trend-content">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span>
+                </div>
+
+                <div class="trend">
+                    <span class="trend-title">Trend title</span><br>
+                    <span class="trend-content">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span>
+                </div>
+
+                <div class="tag-holder">
+                    <span class="tag-header">Tags</span>
+                    <span class="glyphicon glyphicon-tag tag-ico" aria-hidden="true"></span>
+                    <p>Popular idea tags on the block</p>
+                </div>
+                <div class="tag-wrapper">
+                    <span class="tags">Education</span>
+                    <span class="tags">Andela</span>
+                    <span class="tags">Learning</span>
+                    <span class="tags">World Class</span>
+                    <span class="tags">Innovation</span>
+                    <span class="tags">Technology</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="scripts/jquery-2.2.1.min.js"></script>
+<script src="scripts/globalrequest.js"></script>
+<script src="scripts/custom.js"></script>
+<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script src="scripts/markdown-it.min.js"></script>
+</body>
+</html>

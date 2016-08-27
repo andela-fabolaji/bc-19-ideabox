@@ -31,4 +31,14 @@ var GlobalRequest = function () {
     if (isFieldEmpty) return null;
     return formDetails;
   };
+
+  this.getNewPage = function(url) {
+    return $.ajax({
+      url: url,
+      method:'GET',
+      headers:{
+        'token-information':window.localStorage.getItem('authtoken')
+      }
+    })
+  }
 }

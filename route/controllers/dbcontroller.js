@@ -1,4 +1,8 @@
 var mysql = require('mysql');
+var jwt = require('jsonwebtoken');
+var bcrypt = require('bcrypt-nodejs');
+
+var hash = bcrypt.hashSync("femi");
 
 var DbHandler = function () {
   this.connection = mysql.createPool({
@@ -30,10 +34,14 @@ var DbHandler = function () {
         query += ' ,';
       }
       isStartingPoint = false;
+      if (key === 'password') {
+        dataSet[key] = bcrypt.hashSync(dataSet[key]);
+      }
       query += "'" + dataSet[key] + "'";;
     } 
     query += ')';
-    this.executeQuery(query);
+    return query;
+    //this.executeQuery(query);
   }
 
   this.signin = function (details, response) {
@@ -45,11 +53,13 @@ var DbHandler = function () {
           if(res.length === 0){
             response.json({status:false, msg: 'User does not exist!'});  
           } else {
-            if (res[0].password === details.password) {
-              response.json({status:true, msg: 'Welcome!'});
+            if (bcrypt.compareSync(details.password, res[0].password)) {
+              var token = jwt.sign({id:res[0].id}, 'key', {expiresIn: '24h'});
+              response.json({status:true, msg: 'Welcome!', authtoken:token});
             } else {
               response.json({status:false, msg: 'Invalid password'});
             }
+            
           }
         } else {
           response.json({status:false, msg: 'Unable to establish connection!'});
@@ -61,10 +71,26 @@ var DbHandler = function () {
 
   };
 
+  this.register = function(details, response) {
+    var query = this.insertQuery('users', details,response);
+    this.connection.getConnection(function(err, connection) {
+      
+      connection.query(query, function (err, res) {
+        if(err) {
+          response.json({status:false, msg:'This email already exists'})
+        } else {
+          var token = jwt.sign({id:res.id}, 'key', {expiresIn: '24h'});
+          response.json({status:true, msg: 'Registration successfull', authtoken:token});
+        }
+        response.end();
+    });
+      connection.release();
+  });
+}
   this.executeQuery = function (query) {
     var instance = this;
     this.connection.getConnection(function (err, connection) {
-      connection.query(query, function(err, result) {
+      connection.query(query, function (err, result) {
         if (!err) {
           instance.resHandler.send('1');
         } else {
@@ -73,6 +99,27 @@ var DbHandler = function () {
         instance.resHandler.end();
       });
       connection.release();
+    });
+  };
+
+  this.getIdeas = function (response) {
+    var sorter = 'idea_date_time'
+    var query = 'SELECT * FROM ideas, users WHERE users.id = users_id ORDER BY ' + this.connection.escapeId('ideas.' + sorter);
+    this.connection.getConnection(function (err, connection) {
+      connection.query(query, function (err, result) {
+        if (!err) {
+          if (result.length != 0) {
+            response.json(result);
+          } else {
+            response.json({status: false, msg: 'There are no ideas now'});
+          }
+        } else {
+          response.json({
+            status: false,
+            msg: 'Unable to secure connection, please try again'
+          });
+        }
+      });
     });
   };
 
