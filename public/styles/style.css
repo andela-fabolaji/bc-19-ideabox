@@ -231,7 +231,7 @@ textarea.txt-area:focus {
 }
 
 .post {
-    margin-top: 20px;
+    margin-top: 15px;
     padding-bottom: 20px;
     /*border: 2px solid #e2e0e7;*/
     border: 2px solid #fff;
@@ -338,8 +338,17 @@ textarea.txt-area:focus {
     margin-top: 5px;
 }
 
-a#upvote, a#downvote {
+a#upvote span, a#downvote span {
     cursor: pointer;
+}
+
+a#upvote span:hover, a#downvote span:hover {
+    color: #436fb7;
+}
+
+.viewcomments:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .side-board {

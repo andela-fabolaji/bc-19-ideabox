@@ -46,8 +46,8 @@
                     <div class="post-header"><h2><%= eachIdea.idea_title %></h2></div>
                     <div class="post-tags">
                         <span><h6>Posted by <strong><%=eachIdea.lastname + ' ' + eachIdea.firstname%></strong> on <%= new Date(eachIdea.date).getDate() + ' - ' + parseInt(new Date(eachIdea.date).getMonth()+1)+' - '+ new Date(eachIdea.date).getFullYear() + ' at ' + new Date(eachIdea.date).getHours() +' : ' + new Date(eachIdea.date).getMinutes() +' : '+ new Date(eachIdea.date).getSeconds()%></h6></span>
-                        <span class="glyphicon glyphicon-tag tag-ico" aria-hidden="true"></span>
-                        <span class="tag-list">Education, Andela, Innovation, World Class</span>
+                        <!-- <span class="glyphicon glyphicon-tag tag-ico" aria-hidden="true"></span>
+                        <span class="tag-list">Education, Andela, Innovation, World Class</span> -->
                     </div>
                     <div class="post-content"><%= eachIdea.idea_desc %></div>
                     <div class="post-votes">
