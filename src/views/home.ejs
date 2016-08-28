@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ideabox</title>
+    <title></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,23 +40,22 @@
                 </div>
                 
                 <!-- idea stream loads here -->
+
                 <% ideas.forEach(function(eachIdea){ %>
                     <div class="post">
                     <div class="read-more">Read More</div>
                     <div class="post-header"><h2><%= eachIdea.idea_title %></h2></div>
                     <div class="post-tags">
                         <span><h6>Posted by <strong><%=eachIdea.lastname + ' ' + eachIdea.firstname%></strong> on <%= new Date(eachIdea.date).getDate() + ' - ' + parseInt(new Date(eachIdea.date).getMonth()+1)+' - '+ new Date(eachIdea.date).getFullYear() + ' at ' + new Date(eachIdea.date).getHours() +' : ' + new Date(eachIdea.date).getMinutes() +' : '+ new Date(eachIdea.date).getSeconds()%></h6></span>
-                        <!-- <span class="glyphicon glyphicon-tag tag-ico" aria-hidden="true"></span>
-                        <span class="tag-list">Education, Andela, Innovation, World Class</span> -->
                     </div>
-                    <div class="post-content"><%= eachIdea.idea_desc %></div>
+                    <div class="post-content"><div><%- eachIdea.idea_desc %></div></div>
                     <div class="post-votes">
-                        <a class="vote" id="upvote" ideaId="<%= eachIdea.ideaId %>"><span class="glyphicon glyphicon-thumbs-up tag-ico" aria-hidden="true"></span></a><span class="upvotenumber"><%= eachIdea.upvotes %></span>
-                        <a class="vote" id="downvote" ideaId="<%= eachIdea.ideaId %>"><span class="glyphicon glyphicon-thumbs-down tag-ico" aria-hidden="true"></span></a>  <span class="downvotenumber"><%= eachIdea.downvotes %></span>
+                        <a class="vote" id="upvotes" ideaId="<%= eachIdea.ideaId %>"><span class="glyphicon glyphicon-thumbs-up tag-ico" aria-hidden="true"></span></a><span class="upvotenumber"> <%= eachIdea.upvotes %></span>
+                        <a class="vote" id="downvotes" ideaId="<%= eachIdea.ideaId %>"><span class="glyphicon glyphicon-thumbs-down tag-ico" aria-hidden="true"></span></a>  <span class="downvotenumber"><%= eachIdea.downvotes %></span>
                         <span class="glyphicon glyphicon-comment tag-ico" aria-hidden="true"></span> <span class="viewcomments" id="<%= eachIdea.ideaId %>">View comments</span>
                     </div>
                     <div class="post-comment">
-                         <ul>
+                        <ul>
                         
                         </ul> 
                         <input type="text" class="commentText post-title" placeholder="Write a comment">
@@ -69,7 +68,9 @@
             </div>
 
             <div class="col-sm-12 col-md-4 side-board">
+                
                 <!-- side board here -->
+                
                 <div class="trending-ideas clearfix">
                     <span class="trend-header">Trending</span>
                     <span class="glyphicon glyphicon-leaf tag-ico" aria-hidden="true"></span>
@@ -90,7 +91,7 @@
                     <span class="trend-content">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span>
                 </div>
 
-                <div class="tag-holder">
+                <!-- <div class="tag-holder">
                     <span class="tag-header">Tags</span>
                     <span class="glyphicon glyphicon-tag tag-ico" aria-hidden="true"></span>
                     <p>Popular idea tags on the block</p>
@@ -102,7 +103,7 @@
                     <span class="tags">World Class</span>
                     <span class="tags">Innovation</span>
                     <span class="tags">Technology</span>
-                </div>
+                </div> -->
                 <div class="about">
                     <div class="about-header">About Ideabox</div>
                     <div class="about-content">Ideabox is an interactive social platform that connects people around the world to ingenous ideas.</div>
@@ -113,9 +114,9 @@
     </div>
 </div>
 <script src="scripts/jquery-2.2.1.min.js"></script>
+<script src="scripts/showdown.min.js"></script>
 <script src="scripts/globalrequest.js"></script>
 <script src="scripts/custom.js"></script>
 <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
-<script src="scripts/markdown-it.min.js"></script>
 </body>
 </html>
