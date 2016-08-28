@@ -39,4 +39,4 @@ If you wish to contribute, please follow this guide:
 
 ## **Credit**
 ***
-@femipixels Abolaji Femi (Andela-BC-19)
+Abolaji Femi (Andela-BC-19) @femipixels 
