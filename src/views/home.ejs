@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title><%=title%></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,7 +48,7 @@
                     <div class="post-tags">
                         <span><h6>Posted by <strong><%=eachIdea.lastname + ' ' + eachIdea.firstname%></strong> on <%= new Date(eachIdea.date).getDate() + ' - ' + parseInt(new Date(eachIdea.date).getMonth()+1)+' - '+ new Date(eachIdea.date).getFullYear() + ' at ' + new Date(eachIdea.date).getHours() +' : ' + new Date(eachIdea.date).getMinutes() +' : '+ new Date(eachIdea.date).getSeconds()%></h6></span>
                     </div>
-                    <div class="post-content"><div><%- eachIdea.idea_desc %></div></div>
+                    <div class="post-content" id="eachIdea"><div><%- eachIdea.idea_desc %></div></div>
                     <div class="post-votes">
                         <a class="vote" id="upvotes" ideaId="<%= eachIdea.ideaId %>"><span class="glyphicon glyphicon-thumbs-up tag-ico" aria-hidden="true"></span></a><span class="upvotenumber"> <%= eachIdea.upvotes %></span>
                         <a class="vote" id="downvotes" ideaId="<%= eachIdea.ideaId %>"><span class="glyphicon glyphicon-thumbs-down tag-ico" aria-hidden="true"></span></a>  <span class="downvotenumber"><%= eachIdea.downvotes %></span>
@@ -76,20 +76,12 @@
                     <span class="glyphicon glyphicon-leaf tag-ico" aria-hidden="true"></span>
                     <p>Top upvoted ideas today</p>
                 </div>
-                <div class="trend">
-                    <span class="trend-title">Trend title</span><br>
-                    <span class="trend-content">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span>
-                </div>
-                
-                <div class="trend">
-                    <span class="trend-title">Trend title</span><br>
-                    <span class="trend-content">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span>
-                </div>
-
-                <div class="trend">
-                    <span class="trend-title">Trend title</span><br>
-                    <span class="trend-content">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span>
-                </div>
+                <% trending.forEach(function(eachTrend){ %>
+                    <div class="trend">
+                        <span class="trend-title"><%= eachTrend.idea_title %></span><br>
+                        <span class="trend-content"><%- eachTrend.idea_desc %></span>
+                    </div>
+                <% }) %>
 
                 <!-- <div class="tag-holder">
                     <span class="tag-header">Tags</span>
@@ -106,7 +98,7 @@
                 </div> -->
                 <div class="about">
                     <div class="about-header">About Ideabox</div>
-                    <div class="about-content">Ideabox is an interactive social platform that connects people around the world to ingenous ideas.</div>
+                    <div class="about-content">Ideabox is an interactive social platform that connects people around the world to ingenious ideas.</div>
                     <div class="about-footer">Created by Abolaji Femi (Andela BC-19)</div>
                 </div>
             </div>

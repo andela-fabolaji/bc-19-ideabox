@@ -1,2 +1,2 @@
-# bc-19-ideabox
-A social platform for managing ideas.
+# Ideabox
+Ideabox is an interactive social platform that connects people around the world to ingenious ideas.

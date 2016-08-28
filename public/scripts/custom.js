@@ -6,6 +6,7 @@ $(document).ready(function () {
   var signupLink = $('.signup');
   var signinLink = $('.signin');
   var submit = $('.submit');
+  var trend = $('.trend');
 
   signupLink.click(function () {
     signin.css('display', 'none');
@@ -17,7 +18,10 @@ $(document).ready(function () {
     signup.css('display', 'none');
   });
 
-  
+  trend.click(function () {
+    
+  });
+
   
   submit.click(function ( e ) {
     e.preventDefault();
@@ -75,9 +79,7 @@ $(document).ready(function () {
       var converter = new showdown.Converter();
       var defaultOptions = showdown.getDefaultOptions();
 
-
       postDetails['postContent'] = converter.makeHtml(postContent);
-      alert(postDetails['postContent']);
       return postDetails;
     };
 
@@ -90,9 +92,7 @@ $(document).ready(function () {
 
         var ajaxRes = newRequest.ajaxCall('POST', convert(postDetails), '/publish', $(this));
         ajaxRes.done(function ( res ) {
-          alert(res);
           if(res == 1) {
-            alert('shouldreload')
             location.reload();
           }
         });
@@ -103,6 +103,7 @@ $(document).ready(function () {
       var commentDetails = {};
       var commentdom = $(this).siblings('ul');
       var ideaId = $(this).siblings('.ideaId').val();
+      var _this = this;
 
       commentDetails.user_comment = $(this).siblings('.commentText').val();
       commentDetails.ideas_id = $(this).siblings('.ideaId').val();
@@ -115,6 +116,7 @@ $(document).ready(function () {
           console.log(res);
           if ( res == 1 ) {
             fetchComments(commentdom, ideaId);
+            $(_this).siblings('.commentText').val('');
           } else {
             alert('Unable to post comment.+ Please try again.')
           }
