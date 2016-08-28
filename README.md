@@ -20,12 +20,13 @@ Ideabox is lightweight and can be downloaded and run on local machines. The Basi
   * Navigate to the directory 
   * Install dependencies 
   * Run via nodemon 
-  ```sh
-  $ git clone < repository-url >
-  $ cd < directory >
-  $ npm install
-  $ nodemon app.js
-  ```
+  
+```sh
+$ git clone < repository-url >
+$ cd < directory >
+$ npm install
+$ nodemon app.js
+```
 
 ## **Contributing**
 If you wish to contribute, please follow this guide:
