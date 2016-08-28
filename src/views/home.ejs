@@ -8,7 +8,13 @@
 
     <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="icon" href="images/favicon.png">
 
+    <script>
+        if ( !window.localStorage.getItem('authtoken') ) {
+            window.location.href='/';
+        }
+    </script>
 </head>
 <body>
 
@@ -18,8 +24,8 @@
             <div><a href="/home"><img src="images/ideabox_white.png"></a></div>
             <div class="logout">
                 <ul>
-                    <li><a>LOG OUT</a></li>
-                    <li><a>PROFILE</a></li>
+                    <li><a id="logout">LOG OUT</a></li>
+                    <li class="user"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Jane Doe</li>
                 </ul>
             </div>
         </div>
@@ -56,7 +62,6 @@
                     </div>
                     <div class="post-comment">
                         <ul>
-                        
                         </ul> 
                         <input type="text" class="commentText post-title" placeholder="Write a comment">
                         <input type="hidden" class="ideaId" value="<%=eachIdea.ideaId%>">
@@ -82,20 +87,6 @@
                         <span class="trend-content"><%- eachTrend.idea_desc %></span>
                     </div>
                 <% }) %>
-
-                <!-- <div class="tag-holder">
-                    <span class="tag-header">Tags</span>
-                    <span class="glyphicon glyphicon-tag tag-ico" aria-hidden="true"></span>
-                    <p>Popular idea tags on the block</p>
-                </div>
-                <div class="tag-wrapper">
-                    <span class="tags">Education</span>
-                    <span class="tags">Andela</span>
-                    <span class="tags">Learning</span>
-                    <span class="tags">World Class</span>
-                    <span class="tags">Innovation</span>
-                    <span class="tags">Technology</span>
-                </div> -->
                 <div class="about">
                     <div class="about-header">About Ideabox</div>
                     <div class="about-content">Ideabox is an interactive social platform that connects people around the world to ingenious ideas.</div>

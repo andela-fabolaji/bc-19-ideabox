@@ -7,6 +7,7 @@ $(document).ready(function () {
   var signinLink = $('.signin');
   var submit = $('.submit');
   var trend = $('.trend');
+  var logout = $('#logout');
 
   signupLink.click(function () {
     signin.css('display', 'none');
@@ -19,7 +20,7 @@ $(document).ready(function () {
   });
 
   trend.click(function () {
-    
+
   });
 
   
@@ -176,4 +177,9 @@ $(document).ready(function () {
       }
     });
   };
+
+  logout.click(function () {
+    window.localStorage.removeItem('authtoken');
+    window.location.href = '/';
+  });
 });

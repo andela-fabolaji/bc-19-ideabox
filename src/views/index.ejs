@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- <title>ideabox | ...your idea is awesome</title> -->
     <title><%=title%></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +8,12 @@
 
     <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles/style.css">
-
+    <link rel="icon" href="images/favicon.png">
+    <script>
+        if ( window.localStorage.getItem('authtoken') ) {
+            window.location.href='/home?q=' + localStorage.getItem('authtoken');
+        }
+    </script>
 </head>
 <body>
 
@@ -26,7 +30,6 @@
         <div class="herobg">
             <p>Share awesome ideas!</p>
             <p>We are a community of ideators and we are inspired by the desire to change our world!<br>We believe your ideas are awesome</p>
-            
             <a href="" class="btn btn-primary btn-lg join" data-toggle="modal" data-target="#login-modal">Join the wagon to have full access</a>
         </div>
     </div>
@@ -95,8 +98,6 @@
                     <div class="post">
                     <div class="post-header"><h2><%= eachIdea.idea_title %></h2></div>
                     <div class="post-tags">
-                        <!-- <span class="glyphicon glyphicon-tag tag-ico" aria-hidden="true"></span>
-                        <span class="tag-list">Education, Andela, Innovation, World Class</span> -->
                     </div>
                     <div class="post-content"><%= eachIdea.idea_desc %></div>
                 </div>
@@ -112,37 +113,15 @@
                     <span class="glyphicon glyphicon-leaf tag-ico" aria-hidden="true"></span>
                     <p>Top upvoted ideas today</p>
                 </div>
-                <div class="trend">
-                    <span class="trend-title">Trend title</span><br>
-                    <span class="trend-content">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span>
-                </div>
-                
-                <div class="trend">
-                    <span class="trend-title">Trend title</span><br>
-                    <span class="trend-content">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span>
-                </div>
-
-                <div class="trend">
-                    <span class="trend-title">Trend title</span><br>
-                    <span class="trend-content">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span>
-                </div>
-
-                <div class="tag-holder">
-                    <span class="tag-header">Tags</span>
-                    <span class="glyphicon glyphicon-tag tag-ico" aria-hidden="true"></span>
-                    <p>Popular idea tags on the block</p>
-                </div>
-                <div class="tag-wrapper">
-                    <span class="tags">Education</span>
-                    <span class="tags">Andela</span>
-                    <span class="tags">Learning</span>
-                    <span class="tags">World Class</span>
-                    <span class="tags">Innovation</span>
-                    <span class="tags">Technology</span>
-                </div>
+                <% trending.forEach(function(eachTrend){ %>
+                    <div class="trend">
+                        <span class="trend-title"><%= eachTrend.idea_title %></span><br>
+                        <span class="trend-content"><%- eachTrend.idea_desc %></span>
+                    </div>
+                <% }) %>
                 <div class="about">
                     <div class="about-header">About Ideabox</div>
-                    <div class="about-content">Ideabox is an interactive social platform that connects people around the world to ingenous ideas.</div>
+                    <div class="about-content">Ideabox is an interactive social platform that connects people around the world to ingenious ideas.</div>
                     <div class="about-footer">Created by Abolaji Femi (Andela BC-19)</div>
                 </div>
             </div>
