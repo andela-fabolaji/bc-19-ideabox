@@ -51,8 +51,8 @@
                     </div>
                     <div class="post-content"><%= eachIdea.idea_desc %></div>
                     <div class="post-votes">
-                        <a href="" id="upvote"><span class="glyphicon glyphicon-thumbs-up tag-ico" aria-hidden="true"></span></a> <%= eachIdea.upvotes %>
-                        <a href="" id="downvote"><span class="glyphicon glyphicon-thumbs-down tag-ico" aria-hidden="true"></span></a>  <%= eachIdea.downvotes %>
+                        <a class="vote" id="upvote" ideaId="<%= eachIdea.ideaId %>"><span class="glyphicon glyphicon-thumbs-up tag-ico" aria-hidden="true"></span></a><span class="upvotenumber"><%= eachIdea.upvotes %></span>
+                        <a class="vote" id="downvote" ideaId="<%= eachIdea.ideaId %>"><span class="glyphicon glyphicon-thumbs-down tag-ico" aria-hidden="true"></span></a>  <span class="downvotenumber"><%= eachIdea.downvotes %></span>
                         <span class="glyphicon glyphicon-comment tag-ico" aria-hidden="true"></span> <span class="viewcomments" id="<%= eachIdea.ideaId %>">View comments</span>
                     </div>
                     <div class="post-comment">
