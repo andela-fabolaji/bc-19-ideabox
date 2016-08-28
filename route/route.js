@@ -69,6 +69,13 @@ var routes = function(app) {
     dBase.getQueryData(query, res);
   });
 
+  app.post('/votes/:ideaId', function(req, res) {
+    var data = req.body;
+    data.ideas_id = req.params.ideaId;
+    data.users_id = req.tokenvalue.id;
+    dBase.votes(data, res);
+  })
+
 }
 
 module.exports = routes;

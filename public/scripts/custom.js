@@ -109,12 +109,42 @@ $(document).ready(function () {
         });
       }
     }
-
   });
 
 $('.viewcomments').click(function() {
   var commentdom = $(this).parents('.post-votes').siblings('.post-comment').find('ul');
   fetchComments(commentdom, $(this).attr('id'));
+})
+
+$('.vote').click(function(e) {
+  e.preventDefault();
+  var dom = $(this)
+  var domid = $(this).attr('id');
+  if(domid === 'upvote') {
+    var dataDetails = {'type':'upvotes'}
+  } else {
+    var dataDetails = {'type':'downvotes'}
+  }
+  var ajaxRes = newRequest.ajaxCall('POST', dataDetails, '/votes/'+$(this).attr('ideaId'), $(this));
+  ajaxRes.done(function(reply) {
+    if(domid === 'upvote') {
+      dom.siblings('.upvotenumber').text(parseInt(dom.siblings('.upvotenumber').text()) + reply.value);
+      if(reply.type === 'both'){
+        dom.siblings('.downvotenumber').text(parseInt(dom.siblings('.downvotenumber').text()) - 1)
+      }
+    } else {
+      dom.siblings('.downvotenumber').text(parseInt(dom.siblings('.downvotenumber').text()) + reply.value);
+      if(reply.type === 'both'){
+        dom.siblings('.upvotenumber').text(parseInt(dom.siblings('.upvotenumber').text()) - 1)
+      }
+    }
+  })
+})
+
+$('.upvotenumber, .downvotenumber').each(function() {
+  if($(this).text().trim() == '') {
+    $(this).text('0');
+  }
 })
 
 function fetchComments(commentdom, ideaId) {
