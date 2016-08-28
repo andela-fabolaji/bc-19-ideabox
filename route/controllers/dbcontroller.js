@@ -116,7 +116,13 @@ var DbHandler = function () {
       connection.query(query, function ( err, result ) {
         if ( !err ) {
           if (result.length != 0) {
-            response.json(result);
+            var trendingq = "SELECT *, ideas.id AS ideaId, (SUM(votes.upvotes) - SUM(votes.downvotes)) AS relevance FROM ideas LEFT JOIN votes ON ideas.id = ideas_id GROUP BY ideas.id ORDER BY relevance DESC LIMIT 3";
+            connection.query(trendingq, function(err, trending) {
+              if(!err) {
+                response.send({ideas:result, trends:trending});
+              }
+            })
+            
           } else {
             response.json({status: false, msg: 'There are no ideas now'});
           }
@@ -126,7 +132,6 @@ var DbHandler = function () {
             msg: 'Unable to secure connection, please try again'
           });
         }
-        response.end()
       });
     });
   };

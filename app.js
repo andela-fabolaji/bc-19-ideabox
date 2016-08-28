@@ -25,12 +25,12 @@ app.get('/', function ( req, res ) {
     .end(function ( err, result ) {
       res.render(path + "index", {
         'title': 'ideabox | ...your idea is awesome!',
-        'ideas':result.body
+        'ideas':result.body.ideas
       });
     })
 });
 
-app.get('/profile', function ( req, res ) {
+app.get('/home/profile', function ( req, res ) {
   res.render(path + "profile", {
     'title':'Ideabox | Profile'
   });
@@ -42,8 +42,11 @@ app.get('/home', function ( req, res ) {
   agent
     .get('http://127.0.0.1:3000/get_ideas')
     .end(function ( err, result ){
+      var data = result.body;
       res.render(path + "home", {
-        'ideas':result.body
+        'title':'My Ideabox',
+        'ideas': data.ideas,
+        'trending' : data.trends
       });
     })
 });
