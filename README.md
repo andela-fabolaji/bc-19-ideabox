@@ -1,9 +1,7 @@
 # **Ideabox**
-***
 Ideabox is an interactive social platform that connects people around the world to ingenious ideas. Ideabox is built on node, express, ejs and bootstrap. 
 
 ## **Functionality**
-***
 Users Can
   - Create idea posts
   - Comment on posts 
@@ -14,7 +12,6 @@ You can also:
   - See trending posts (based on highest vote difference)
 
 ## **Download and usage**
-***
 Ideabox is lightweight and can be downloaded and run on local machines. The Basic requirement for local hosting is [node](https://nodejs.org/)
 
 #### Setup
@@ -29,8 +26,8 @@ Ideabox is lightweight and can be downloaded and run on local machines. The Basi
   $ npm install
   $ nodemon app.js
   ```
+
 ## **Contributing**
-***
 If you wish to contribute, please follow this guide:
 1. Clone the repository
 2. Branch out for new features
@@ -38,5 +35,4 @@ If you wish to contribute, please follow this guide:
 4. Raise PRs
 
 ## **Credit**
-***
 Abolaji Femi (Andela-BC-19) @femipixels 
