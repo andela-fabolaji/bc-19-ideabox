@@ -19,10 +19,10 @@ app.listen(3000, function () {
   console.log("Server running at Port 3000");
 });
 
-app.get('/', function (req, res) {
+app.get('/', function ( req, res ) {
   agent
     .get('http://127.0.0.1:3000/get_ideas')
-    .end(function (err, result) {
+    .end(function ( err, result ) {
       res.render(path + "index", {
         'title': 'ideabox | ...your idea is awesome!',
         'ideas':result.body
@@ -30,22 +30,18 @@ app.get('/', function (req, res) {
     })
 });
 
-app.get('/profile', function (req, res) {
+app.get('/profile', function ( req, res ) {
   res.render(path + "profile", {
     'title':'Ideabox | Profile'
   });
 });
 
-// app.get('*', function (req, res) {
-//   res.render(path + '404');
-// });
-
 routes(app);
 
-app.get('/home', function (req, res) {
+app.get('/home', function ( req, res ) {
   agent
     .get('http://127.0.0.1:3000/get_ideas')
-    .end(function(err, result){
+    .end(function ( err, result ){
       res.render(path + "home", {
         'ideas':result.body
       });

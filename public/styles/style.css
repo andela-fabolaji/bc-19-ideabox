@@ -1,20 +1,16 @@
 /**
  * BASIC PRESETS
  */
-
 * {
   margin: 0 auto;
   padding: 0;
 }
 
-ul {
-  list-style: none; }
+/*ul { list-style: none; }*/
 
-li {
-  display: inline; }
+/*li { display: inline; }*/
 
-a {
-  text-decoration: none; }
+a { text-decoration: none; }
 
 html, body {
   text-align: center;
@@ -28,22 +24,23 @@ body {
     padding-bottom: 50px;
 }
 
+
 /**
  * IMPORT FONTS
  */
-
 @font-face {
   font-family: "Proreg";
-  src: url("../bootstrap-3.3.7/fonts/Proxima-Nova-Regular.otf") format("opentype"); }
+  src: url("../bootstrap-3.3.7/fonts/Proxima-Nova-Regular.otf") format("opentype");
+}
 
-  @font-face {
+@font-face {
   font-family: "Probold";
-  src: url("../bootstrap-3.3.7/fonts/Proxima-Nova-Bold.otf") format("opentype"); }
+  src: url("../bootstrap-3.3.7/fonts/Proxima-Nova-Bold.otf") format("opentype");
+}
 
 /**
  * ERROR PAGE
  */
-
 .four-o-four {
     font-size: 50px;
     font-weight: bold;
@@ -55,18 +52,13 @@ body {
     height: 55px;
 }
 
-.page-not-found, .header img {
-    height: 55px;
-}
+.page-not-found, .header img { height: 55px; }
+.page-error-msg { width: 90%; }
 
-.page-error-msg {
-    width: 90%;
-}
 
 /**
  * HOME HEADER
  */
-
 .header {
     background: #436fb7;
     height: 55px;   
@@ -88,9 +80,7 @@ body {
     width: 120px;
 }
 
-.login-signup:hover {
-    background:#2e5699;
-}
+.login-signup:hover { background:#2e5699; }
 
 .login-signup a {
     text-decoration: none;
@@ -107,6 +97,9 @@ body {
     height: 55px;
     float: right;
 }
+
+.logout ul { list-style: none; }
+.logout li { display: inline; }
 
 .logout li a {
     display: block;
@@ -128,7 +121,6 @@ body {
 /**
  * Hero bg 
  */
-
 .herobg {
     background: url("../images/home_banner.jpg") center no-repeat;
     height: 240px;
@@ -144,40 +136,51 @@ body {
     font-family: Probold;    
 }
 
-
 .herobg > p:nth-child(2) {
     font-size: .8em;
 }
 
+
+/**
+ * FORM STYLE
+ */
 form > div > label { font-size: 0.8em;}
-
-#signin form label, #signin h3, #signup form label, #signup h3 {
-    float:left;
-}
-
+#signin form label, #signin h3, #signup form label, #signup h3 { float:left; }
 #signin h3, #signup h3 { color: #436fb7;}
-
 #signup {display: none;}
-
 .submit { width: 100%;}
-
-
 #signin .modal-body {min-height: 250px;}
 #signup .modal-body { min-height: 350px; }
 
-.modal-footer { text-align: center; font-size: 0.8em; }
-.signup, .signin { color: #436fb7; cursor: pointer;}
-img.loader { height: 15px; width: 15px; display: none;}
+.modal-footer { 
+    text-align: center;
+    font-size: 0.8em;
+}
 
+.signup, .signin { 
+    color: #436fb7;
+    cursor: pointer;
+}
+
+img.loader {
+    height: 15px;
+    width: 15px;
+    display: none;
+}
+
+
+/**
+ *  MAIN
+ */
 .main {
     max-width: 1000px;
     margin-top: 20px;
 }
 
-.idea-stream {
 
-}
-
+/**
+ * IDEA STREAM
+ */
 .post-idea, .post {
     width: 100%;
 }
@@ -233,7 +236,6 @@ textarea.txt-area:focus {
 .post {
     margin-top: 15px;
     padding-bottom: 20px;
-    /*border: 2px solid #e2e0e7;*/
     border: 2px solid #fff;
     border-radius: 3px;
     moz-border-radius: 3px;
@@ -242,27 +244,13 @@ textarea.txt-area:focus {
     background: #fff;
 }
 
-.post:hover .post-content {
-    background: #f2f2f2;
-}
-
-.post:hover {
-    /*background: #f9f9f9;*/
-    /*background: #dfe;*/
-    /*background: #ebfaf3;*/
-    /*background: #f4f8f6;*/
-    /*border: 2px solid #436fb7;*/
-    box-shadow: 0 1px 7px 1px rgba(0,0,0,0.08);
-}
+.post:hover .post-content { background: #f2f2f2; }
+.post:hover { box-shadow: 0 1px 7px 1px rgba(0,0,0,0.08); }
 
 .post > div.post-header, div.post-content {
     width: 95%;
     min-height: 40px;
     text-align: left;
-}
-
-.post .post-header {
-    /*border-bottom: 1px solid #e2e0e7;*/
 }
 
 .post h2 { font-weight: bold;}
@@ -275,11 +263,13 @@ textarea.txt-area:focus {
     transition: ease-in-out all 0.3s;
 }
 
+.post-content > div ul,
+.post-content > div ol { margin-left: 20px;}
+
 .post .read-more {
     position: relative;
     float: right;
     width: 70px;
-    /*border: 2px solid #e2e0e7;*/
     border-top-right-radius: 3px;
     text-align: center;
     padding-top: 10px;
@@ -299,9 +289,7 @@ textarea.txt-area:focus {
     text-align: left;
 }
 
-.post-tags span.tag-ico {
-    color: #436fb7;
-}
+.post-tags span.tag-ico { color: #436fb7; }
 
 .post-tags span.tag-list {
     font-size: 0.7em;
@@ -323,6 +311,8 @@ textarea.txt-area:focus {
     font-size: 0.8em;
 }
 
+.post-comment ul { list-style:none; }
+.post-comment li { displa:inline; }
 .post-comment li {
     display: block;
     border-bottom: 1px solid #e2e0e7;
@@ -330,20 +320,11 @@ textarea.txt-area:focus {
     padding: 5px;
 }
 
-.post-comment li h6 {
-    color: #436fb7;
-}
-
-.btn-comment {
-    margin-top: 5px;
-}
-
-a#upvote span, a#downvote span {
-    cursor: pointer;
-}
-
-a#upvote span:hover, a#downvote span:hover {
-    color: #436fb7;
+.post-comment li h6 { color: #436fb7; }
+.btn-comment { margin-top: 5px; }
+.vote span { font-size: 1.2em;}
+.vote:hover span {
+    cursor: pointer; color: #436fb7;
 }
 
 .viewcomments:hover {
@@ -351,10 +332,10 @@ a#upvote span:hover, a#downvote span:hover {
     text-decoration: underline;
 }
 
-.side-board {
-    
-}
 
+/**
+ * SIDE BOARD
+ */
 .trending-ideas, .tag-holder {
     padding-top: 20px;
     width: 100%;
@@ -395,13 +376,13 @@ a#upvote span:hover, a#downvote span:hover {
     font-weight: bold;
 }
 
-.trend span.trend-content {
+.trend span.trend-content { font-size: 0.8em; }
+.tag-wrapper { text-align: left; }
+
+.tag-ico {
+    color: #bbbbbb;
     font-size: 0.8em;
 }
-
-.tag-wrapper {text-align: left;}
-
-.tag-ico { color: #bbbbbb; font-size: 0.8em;}
 
 .tags {
     display: inline-block;
@@ -439,12 +420,15 @@ a#upvote span:hover, a#downvote span:hover {
     color: #436fb7;
 }
 
-.about .about-content { border-bottom: 1px solid #e2e0e7; padding-bottom: 10px; }
+.about .about-content {
+    border-bottom: 1px solid #e2e0e7;
+    padding-bottom: 10px;
+}
 
 
-
-
-
+/**
+ * TABLETS AND MINIS
+ */
 @media (min-width: 768px) {
     .four-o-four {
         font-size: 200px;
@@ -475,9 +459,7 @@ a#upvote span:hover, a#downvote span:hover {
     }
 
 
-    .herobg > p:nth-child(2) {
-        font-size: 1.3em;
-    }
+    .herobg > p:nth-child(2) { font-size: 1.3em; }
 
     .trending-ideas {
         height: 65px;
@@ -485,6 +467,10 @@ a#upvote span:hover, a#downvote span:hover {
     }
 }
 
+
+/**
+ * PCS
+ */
 @media (min-width: 992px) {
 
 }
