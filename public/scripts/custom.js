@@ -57,8 +57,10 @@ $(document).ready(function () {
       
       if ( userDetails === null ) {
         returnMsgField.text('All fields are compulsory').addClass('label label-danger'); 
-      } else if( userDetails['fullname'].split(' ').length < 2 ) {
+      } else if ( userDetails['fullname'].split(' ').length < 2 ) {
         returnMsgField.text('Your fullname is required').addClass('label label-danger'); 
+      } else if ( userDetails['regpassword'] !== userDetails['confirmpassword']) {
+        returnMsgField.text('Passwords don\'t match').addClass('label label-danger'); 
       } else {
         var ajaxRes = newRequest.ajaxCall('POST', userDetails, '/signup', $(this));
         ajaxRes.done(function ( res ) {
@@ -116,7 +118,6 @@ $(document).ready(function () {
       } else {
         var ajaxRes = newRequest.ajaxCall('POST', commentDetails, '/comment', $(this));
         ajaxRes.done(function ( res ) {
-          console.log(res);
           if ( res == 1 ) {
             fetchComments(commentdom, ideaId);
             $(_this).siblings('.commentText').val('');

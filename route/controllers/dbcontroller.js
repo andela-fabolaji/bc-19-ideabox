@@ -28,13 +28,13 @@ var DbHandler = function () {
     isStartingPoint = true;
     for ( var key in dataSet ) {
       if ( !isStartingPoint ) {
-        query += ' ,';
+        query += ', ';
       }
       isStartingPoint = false;
       if ( key === 'password' ) {
         dataSet[key] = bcrypt.hashSync( dataSet[key] );
       }
-      query += "'" + dataSet[key] + "'";;
+      query += mysql.escape(dataSet[key]);
     } 
     query += ')';
     
@@ -115,7 +115,6 @@ var DbHandler = function () {
     this.connection.getConnection(function ( err, connection ) {
       connection.query(query, function ( err, result ) {
         if ( !err ) {
-          if (result.length != 0) {
             var trendingq = "SELECT *, LEFT(idea_desc, 100) AS idea_desc, ideas.id AS ideaId, (SUM(votes.upvotes) - SUM(votes.downvotes)) AS relevance FROM ideas LEFT JOIN votes ON ideas.id = ideas_id GROUP BY ideas.id ORDER BY relevance DESC LIMIT 3";
             connection.query(trendingq, function(err, trending) {
               if(!err) {
@@ -123,9 +122,7 @@ var DbHandler = function () {
               }
             })
             
-          } else {
-            response.json({status: false, msg: 'There are no ideas now'});
-          }
+          
         } else {
           response.json({
             status: false,
