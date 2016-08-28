@@ -7,6 +7,7 @@ $(document).ready(function () {
   var signinLink = $('.signin');
   var submit = $('.submit');
   var trend = $('.trend');
+  var logout = $('#logout');
 
   signupLink.click(function () {
     signin.css('display', 'none');
@@ -19,7 +20,7 @@ $(document).ready(function () {
   });
 
   trend.click(function () {
-    
+
   });
 
   
@@ -39,6 +40,7 @@ $(document).ready(function () {
           if ( res.status === true ) {
             returnMsgField.text('User verified').addClass('label label-success'); 
             window.localStorage.setItem('authtoken', res.authtoken);
+            window.localStorage.setItem('fullname', res.fullname);
             window.location.href = '/home?q='+window.localStorage.getItem('authtoken');
           } else {
             returnMsgField.text('Incorrect username or password!')
@@ -65,6 +67,7 @@ $(document).ready(function () {
             .removeClass('label-danger')
             .addClass('label label-success');
             window.localStorage.setItem('authtoken', res.authtoken);
+            window.localStorage.setItem('fullname', res.fullname);
             window.location.href = '/home?q='+window.localStorage.getItem('authtoken');
           } else {
             returnMsgField.text('Process terminated. Unable to create account')
@@ -176,4 +179,11 @@ $(document).ready(function () {
       }
     });
   };
+
+  logout.click(function () {
+    window.localStorage.removeItem('authtoken');
+    window.location.href = '/';
+  });
+
+  $('#fullname').text(window.localStorage.getItem('fullname'));
 });

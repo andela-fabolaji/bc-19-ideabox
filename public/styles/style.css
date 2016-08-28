@@ -96,10 +96,18 @@ body {
 .logout {
     height: 55px;
     float: right;
+    position: relative;
+    z-index: 999;
 }
 
-.logout ul { list-style: none; }
+.logout ul { list-style: none; width: 120px;
+background: #436fb7;}
+
 .logout li { display: inline; }
+
+.logout li ul {
+    display: none;
+}
 
 .logout li a {
     display: block;
@@ -112,11 +120,21 @@ body {
     padding-top: 18px;
 }
 
-.logout li a:hover {
-    background:#2e5699;
+.logout ul:hover ul {
+    background: #436fb7;
+    display: block;
     cursor: pointer;
 }
 
+.logout ul:hover a {
+    display: block;
+    background:#2e5699;
+}
+
+.logout li a:hover {
+    display: block;
+    background: #608fdc;
+}
 
 /**
  * Hero bg 

@@ -23,17 +23,13 @@ app.get('/', function ( req, res ) {
   agent
     .get('http://127.0.0.1:3000/get_ideas')
     .end(function ( err, result ) {
+      var data = result.body;
       res.render(path + "index", {
         'title': 'ideabox | ...your idea is awesome!',
-        'ideas':result.body.ideas
+        'ideas': data.ideas,
+        'trending' : data.trends
       });
     })
-});
-
-app.get('/home/profile', function ( req, res ) {
-  res.render(path + "profile", {
-    'title':'Ideabox | Profile'
-  });
 });
 
 routes(app);

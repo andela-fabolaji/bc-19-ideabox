@@ -24,7 +24,7 @@ var routes = function ( app ) {
   });
 
   app.get('/get_ideas', function ( req, res ) {
-    var data = req.body;
+    // var data = req.body;
     dBase.getIdeas( res );
   });
 
