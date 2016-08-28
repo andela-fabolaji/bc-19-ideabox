@@ -51,7 +51,7 @@ var DbHandler = function () {
           } else {
             if ( bcrypt.compareSync( details.password, res[0].password ) ) {
               var token = jwt.sign({id:res[0].id}, 'key', {expiresIn: '24h'});
-              response.json({status:true, msg: 'Welcome!', authtoken:token});
+              response.json({status:true, msg: 'Welcome!', authtoken:token, 'fullname':res[0].lastname + " " + res[0].firstname});
             } else {
               response.json({status:false, msg: 'Invalid password'});
             }
@@ -75,7 +75,7 @@ var DbHandler = function () {
           response.json({status:false, msg:'This email already exists'})
         } else {
           var token = jwt.sign({id:res.id}, 'key', {expiresIn: '24h'});
-          response.json({status:true, msg: 'Registration successfull', authtoken: token});
+          response.json({status:true, msg: 'Registration successfull', authtoken: token, 'fullname':details.lastname+" "+details.firstname});
         }
         response.end();
       });
