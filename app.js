@@ -2,6 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser')
 var agent = require('superagent');
 
+var port = process.env.PORT || 3000;
+
 var app = express();
 var routes = require('./route/route');
 app.use(express.static(__dirname + '/public/'));
@@ -15,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set('src/views', path);
 app.set('view engine', 'ejs');
 
-app.listen(3000, function () {
+app.listen(port, function () {
   console.log("Server running at Port 3000");
 });
 
