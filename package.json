@@ -4,7 +4,8 @@
   "description": "A social app for managing ideas",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nyc mocha",
+    "start": "node app.js -w"
   },
   "repository": {
     "type": "git",
@@ -24,10 +25,19 @@
   },
   "homepage": "https://github.com/femipixels/bc-19-ideabox#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
     "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.1",
     "express": "^4.14.0",
+    "jsonwebtoken": "^7.1.9",
+    "mocha": "^3.0.2",
     "multer": "^1.2.0",
-    "node-mysql": "^0.4.2"
+    "node-mysql": "^0.4.2",
+    "nyc": "^8.1.0",
+    "showdown": "^1.4.3",
+    "superagent": "^2.2.0"
   }
 }

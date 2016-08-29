@@ -1,0 +1,494 @@
+/**
+ * BASIC PRESETS
+ */
+* {
+  margin: 0 auto;
+  padding: 0;
+}
+
+/*ul { list-style: none; }*/
+
+/*li { display: inline; }*/
+
+a { text-decoration: none; }
+
+html, body {
+  text-align: center;
+  font-size: 100%;
+  -webkit-font-smoothing: antialaiased;
+  font-smoothing: antialaiased;
+}
+
+body {
+    background: #efefef;
+    padding-bottom: 50px;
+}
+
+
+/**
+ * IMPORT FONTS
+ */
+@font-face {
+  font-family: "Proreg";
+  src: url("../bootstrap-3.3.7/fonts/Proxima-Nova-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Probold";
+  src: url("../bootstrap-3.3.7/fonts/Proxima-Nova-Bold.otf") format("opentype");
+}
+
+/**
+ * ERROR PAGE
+ */
+.four-o-four {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.page-not-found {
+    text-align: center;
+    background: #436fb7;
+    height: 55px;
+}
+
+.page-not-found, .header img { height: 55px; }
+.page-error-msg { width: 90%; }
+
+
+/**
+ * HOME HEADER
+ */
+.header {
+    background: #436fb7;
+    height: 55px;   
+}
+
+.header-content {
+    max-width: 1000px;
+    height: 55px;
+    background: #436fb7;
+}
+
+.header-content div img {
+    float: left;
+    margin-left: 5px;
+}
+
+.login-signup {
+    float: right;
+    width: 120px;
+}
+
+.login-signup:hover { background:#2e5699; }
+
+.login-signup a {
+    text-decoration: none;
+    font-size: 0.8em;
+    color: #fff;
+    display: block;
+    padding-top: 18px;
+    margin-right: 5px;
+    font-weight: bold;
+    height: 55px;
+}
+
+.logout {
+    height: 55px;
+    float: right;
+    position: relative;
+    z-index: 999;
+}
+
+.logout ul { list-style: none; width: 120px;
+background: #436fb7;}
+
+.logout li { display: inline; }
+
+.logout li ul {
+    display: none;
+}
+
+.logout li a {
+    display: block;
+    width: 120px;
+    float: right;
+    height: 55px;
+    text-decoration: none;
+    font-size: 0.8em;
+    color: #fff;
+    padding-top: 18px;
+}
+
+.logout ul:hover ul {
+    background: #436fb7;
+    display: block;
+    cursor: pointer;
+}
+
+.logout ul:hover a {
+    display: block;
+    background:#2e5699;
+}
+
+.logout li a:hover {
+    display: block;
+    background: #608fdc;
+}
+
+/**
+ * Hero bg 
+ */
+.herobg {
+    background: url("../images/home_banner.jpg") center no-repeat;
+    height: 240px;
+    width: 100%;
+    color: #fff;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-rigt: 10px;
+}
+
+.herobg > p:first-child {
+    font-size: 2em;
+    font-family: Probold;    
+}
+
+.herobg > p:nth-child(2) {
+    font-size: .8em;
+}
+
+
+/**
+ * FORM STYLE
+ */
+form > div > label { font-size: 0.8em;}
+#signin form label, #signin h3, #signup form label, #signup h3 { float:left; }
+#signin h3, #signup h3 { color: #436fb7;}
+#signup {display: none;}
+.submit { width: 100%;}
+#signin .modal-body {min-height: 250px;}
+#signup .modal-body { min-height: 350px; }
+
+.modal-footer { 
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.signup, .signin { 
+    color: #436fb7;
+    cursor: pointer;
+}
+
+img.loader {
+    height: 15px;
+    width: 15px;
+    display: none;
+}
+
+
+/**
+ *  MAIN
+ */
+.main {
+    max-width: 1000px;
+    margin-top: 20px;
+}
+
+
+/**
+ * IDEA STREAM
+ */
+.post-idea, .post {
+    width: 100%;
+}
+
+.post-idea {
+    border-radius: 3px;
+    background: #fff;
+    padding: 10px;
+}
+
+.post-idea span {
+    font-size: 0.7em;
+    float: left;
+    position: relative;
+    top: 15px;
+    margin-left: 5px;
+    color: #bababa;
+}
+
+input.post-title {
+    width: 100%;
+    padding: 5px;
+    font-family: Probold;
+    font-size: 1.5em;
+    outline: none;
+    border: 0;
+    border-bottom: 1px solid #e2e0e7;
+}
+
+textarea.txt-area {
+    width: 100%;
+    margin-top: 10px;
+    min-height: 65px;
+    resize: none;
+    outline: none;
+    border: 0;
+    padding: 5px;
+    font-family: Proreg;
+    color: #a3a3a3;
+}
+
+textarea.txt-area:focus {
+    color: #000;
+}
+
+.btn-custom {
+    margin-top: 5px;
+    width: 70px;
+    padding: 5px;
+    float: left;
+}
+
+.post {
+    margin-top: 15px;
+    padding-bottom: 20px;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    moz-border-radius: 3px;
+    o-border-radius: 3px;
+    font-family: Proreg;
+    background: #fff;
+}
+
+.post:hover .post-content { background: #f2f2f2; }
+.post:hover { box-shadow: 0 1px 7px 1px rgba(0,0,0,0.08); }
+
+.post > div.post-header, div.post-content {
+    width: 95%;
+    min-height: 40px;
+    text-align: left;
+}
+
+.post h2 { font-weight: bold;}
+
+.post .post-content {
+    border: 1px solid #e2e0e7;
+    padding: 10px;
+    border-radius: 3px;
+    background: #fafafa;
+    transition: ease-in-out all 0.3s;
+}
+
+.post-content > div ul,
+.post-content > div ol { margin-left: 20px;}
+
+.post .read-more {
+    position: relative;
+    float: right;
+    width: 70px;
+    border-top-right-radius: 3px;
+    text-align: center;
+    padding-top: 10px;
+    font-style: italic;
+    font-size: 0.7em;
+    color: #bababa;
+}
+
+.post .read-more:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #7b7b7b;
+}
+
+.post-tags {
+    width: 95%;
+    text-align: left;
+}
+
+.post-tags span.tag-ico { color: #436fb7; }
+
+.post-tags span.tag-list {
+    font-size: 0.7em;
+    color: #436fb7;
+}
+
+.post-votes { 
+    width: 95%;
+    margin-top: 10px;
+    text-align: left;
+    font-size: 0.8em;
+    color: #436fb7;
+}
+
+.post-comment {
+    width: 95%;
+    margin-top: 10px;
+    text-align: left;
+    font-size: 0.8em;
+}
+
+.post-comment ul { list-style:none; }
+.post-comment li { displa:inline; }
+.post-comment li {
+    display: block;
+    border-bottom: 1px solid #e2e0e7;
+    background: #f2f2f2;
+    padding: 5px;
+}
+
+.post-comment li h6 { color: #436fb7; }
+.btn-comment { margin-top: 5px; }
+.vote span { font-size: 1.2em;}
+.vote:hover span {
+    cursor: pointer; color: #436fb7;
+}
+
+.viewcomments:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+/**
+ * SIDE BOARD
+ */
+.trending-ideas, .tag-holder {
+    padding-top: 20px;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid #e2e0e7;
+}
+
+.trending-ideas > span.trend-header, .tag-holder span.tag-header {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #436fb7;
+}
+
+.trending-ideas p, .tag-holder p {
+    font-size: 0.8em;
+    color: #131313;
+}
+
+.trend {
+    width: 100%;
+    border-radius: 3px;
+    background: #fff;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 1em;
+}
+
+.trend:hover span.trend-title {
+    color: #436fb7;
+    cursor: pointer;
+}
+
+.trend:hover { cursor: pointer;}
+
+.trend span.trend-title {
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.trend span.trend-content { font-size: 0.8em; }
+.tag-wrapper { text-align: left; }
+
+.tag-ico {
+    color: #bbbbbb;
+    font-size: 0.8em;
+}
+
+.tags {
+    display: inline-block;
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 3px;
+    background: #c7c7c7;
+    font-size: 0.8em;
+    color: #f8f8f8;
+    margin-top: 10px;
+}
+
+.tags:hover {
+    background: #fff;
+    color: #7b7b7b;
+    cursor: pointer
+}
+
+.about {
+    width: 100%;
+    font-size: 0.8em;
+    color:#848484;
+    text-align: left;
+    padding-top: 20px;
+}
+
+.about .about-content, .about .about-footer {
+    padding-top: 10px;
+}
+
+.about .about-header {
+    border-bottom: 1px solid #e2e0e7;
+    height: 30px;
+    font-weight: bold;
+    color: #436fb7;
+}
+
+.about .about-content {
+    border-bottom: 1px solid #e2e0e7;
+    padding-bottom: 10px;
+}
+
+
+/**
+ * TABLETS AND MINIS
+ */
+@media (min-width: 768px) {
+    .four-o-four {
+        font-size: 200px;
+        font-weight: bold;
+    }
+
+    .page-not-found {
+        text-align: center;
+        background: #436fb7;
+        height: 55px;
+    }
+
+    .page-not-found img {
+        height: 55px;
+        width: 103px;
+    }
+
+    .herobg {
+        background: url("../images/home_banner.jpg") center no-repeat;
+        height: 240px;
+        width: 100%;
+        padding-top: 5px;
+    }
+
+    .herobg > p:first-child {
+        font-size: 4.0em;
+        font-family: Probold;    
+    }
+
+
+    .herobg > p:nth-child(2) { font-size: 1.3em; }
+
+    .trending-ideas {
+        height: 65px;
+        width: 100%;
+    }
+}
+
+
+/**
+ * PCS
+ */
+@media (min-width: 992px) {
+
+}

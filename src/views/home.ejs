@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%=title%></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="icon" href="images/favicon.png">
+
+    <script>
+        if ( !window.localStorage.getItem('authtoken') ) {
+            window.location.href='/';
+        }
+    </script>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row header">
+        <div class="header-content">
+            <div><a href="/home"><img src="images/ideabox_white.png"></a></div>
+            <div class="logout">
+                <ul>
+                    <li>
+                        <a href=""><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;<span id="fullname"></span></a>
+                        <ul>
+                            <li><a id="logout" href="">LOG OUT</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="main">
+            <div class="col-sm-12 col-md-8 idea-stream">
+                
+                <!-- create an idea -->
+                  
+                <div class="post-idea clearfix">
+                    <form>
+                        <input class="post-title" type="text" placeholder="idea title" id="postTitle">
+                        <textarea id="postContent" class="txt-area" placeholder="Write your awesome..."></textarea>
+                    <button class="btn btn-primary btn-custom submit" id="publish">Publish</button><span>Markdown syntax enalbed.</span>
+                    </form>
+                    
+                </div>
+                
+                <!-- idea stream loads here -->
+
+                <% ideas.forEach(function(eachIdea){ %>
+                    <div class="post">
+                    <div class="read-more">Read More</div>
+                    <div class="post-header"><h2><%= eachIdea.idea_title %></h2></div>
+                    <div class="post-tags">
+                        <span><h6>Posted by <strong><%=eachIdea.lastname + ' ' + eachIdea.firstname%></strong> on <%= new Date(eachIdea.date).getDate() + ' - ' + parseInt(new Date(eachIdea.date).getMonth()+1)+' - '+ new Date(eachIdea.date).getFullYear() + ' at ' + new Date(eachIdea.date).getHours() +' : ' + new Date(eachIdea.date).getMinutes() +' : '+ new Date(eachIdea.date).getSeconds()%></h6></span>
+                    </div>
+                    <div class="post-content" id="eachIdea"><div><%- eachIdea.idea_desc %></div></div>
+                    <div class="post-votes">
+                        <a class="vote" id="upvotes" ideaId="<%= eachIdea.ideaId %>"><span class="glyphicon glyphicon-thumbs-up tag-ico" aria-hidden="true"></span></a><span class="upvotenumber"> <%= eachIdea.upvotes %></span>
+                        <a class="vote" id="downvotes" ideaId="<%= eachIdea.ideaId %>"><span class="glyphicon glyphicon-thumbs-down tag-ico" aria-hidden="true"></span></a>  <span class="downvotenumber"><%= eachIdea.downvotes %></span>
+                        <span class="glyphicon glyphicon-comment tag-ico" aria-hidden="true"></span> <span class="viewcomments" id="<%= eachIdea.ideaId %>">View comments</span>
+                    </div>
+                    <div class="post-comment">
+                        <ul>
+                        </ul> 
+                        <input type="text" class="commentText post-title" placeholder="Write a comment">
+                        <input type="hidden" class="ideaId" value="<%=eachIdea.ideaId%>">
+                        <button class="commentbtn submit btn btn-primary btn-comment">Comment</button>
+                    </div>
+                </div>
+                <% }); %>
+                
+            </div>
+
+            <div class="col-sm-12 col-md-4 side-board">
+                
+                <!-- side board here -->
+                
+                <div class="trending-ideas clearfix">
+                    <span class="trend-header">Trending</span>
+                    <span class="glyphicon glyphicon-leaf tag-ico" aria-hidden="true"></span>
+                    <p>Top upvoted ideas today</p>
+                </div>
+                <% trending.forEach(function(eachTrend){ %>
+                    <div class="trend">
+                        <span class="trend-title"><%= eachTrend.idea_title %></span><br>
+                        <span class="trend-content"><%- eachTrend.idea_desc %></span>
+                    </div>
+                <% }) %>
+                <div class="about">
+                    <div class="about-header">About Ideabox</div>
+                    <div class="about-content">Ideabox is an interactive social platform that connects people around the world to ingenious ideas.</div>
+                    <div class="about-footer">Created by Abolaji Femi (Andela BC-19)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="scripts/jquery-2.2.1.min.js"></script>
+<script src="scripts/showdown.min.js"></script>
+<script src="scripts/globalrequest.js"></script>
+<script src="scripts/custom.js"></script>
+<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

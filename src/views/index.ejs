@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%=title%></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="icon" href="images/favicon.png">
+    <script>
+        if ( window.localStorage.getItem('authtoken') ) {
+            window.location.href='/home?q=' + localStorage.getItem('authtoken');
+        }
+    </script>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row header">
+        <div class="header-content">
+            <div><a href="/"><img src="images/ideabox_white.png"></a></div>
+            <div class="login-signup">
+                <a href="" data-toggle="modal" data-target="#login-modal">SIGN IN</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="herobg">
+            <p>Share awesome ideas!</p>
+            <p>We are a community of ideators and we are inspired by the desire to change our world!<br>We believe your ideas are awesome</p>
+            <a href="" class="btn btn-primary btn-lg join" data-toggle="modal" data-target="#login-modal">Join the wagon to have full access</a>
+        </div>
+    </div>
+    <div id="login-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div id="signin">    
+                    <div class="modal-header">
+                        <h3><strong>Sign in</strong></h3>    
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" class="form-control">
+                            </div>
+                            <button id="signinBtn" class="btn btn-default pull-right submit">Sign in&nbsp;<img class="loader" src="images/loader.gif"></button>
+                        </form>
+                        <span class="label auth-msg"></span>
+                    </div>
+                    <div class="modal-footer">Don't have an account? <span class="signup"><a>Sign up</a></span><br>Forgot password</div>  
+                </div>
+
+                <div id="signup">    
+                    <div class="modal-header">
+                        <h3><strong>Sign up</strong></h3>    
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="fullname">Fullname <small>As in "John Doe"</small> *</label>
+                                <input type="text" id="fullname" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="regemail" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password *</label>
+                                <input type="password" id="regpassword" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Confirm Password *</label>
+                                <input type="password" id="confirmpassword" class="form-control">
+                            </div>
+                            <button id="signupBtn" class="btn btn-default pull-right submit">Create my account&nbsp;<img class="loader" src="images/loader.gif"></button>
+                        </form>
+                        <span class="label auth-msg"></span>
+                    </div>
+                    <div class="modal-footer">Have an account already? <span class="signin"><a>Sign in</a></span></div>  
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="main">
+            <div class="col-sm-12 col-md-8 idea-stream">
+                <!-- idea stream loads here -->
+
+                <% ideas.forEach(function(eachIdea){ %>
+                    <div class="post">
+                    <div class="post-header"><h2><%= eachIdea.idea_title %></h2></div>
+                    <div class="post-tags">
+                    </div>
+                    <div class="post-content"><%- eachIdea.idea_desc %></div>
+                </div>
+                <% }); %>
+
+                
+            </div>
+
+            <div class="col-sm-12 col-md-4 side-board">
+                <!-- side board here -->
+                <div class="trending-ideas clearfix">
+                    <span class="trend-header">Trending</span>
+                    <span class="glyphicon glyphicon-leaf tag-ico" aria-hidden="true"></span>
+                    <p>Top upvoted ideas today</p>
+                </div>
+                <% trending.forEach(function(eachTrend){ %>
+                    <div class="trend">
+                        <span class="trend-title"><%= eachTrend.idea_title %></span><br>
+                        <span class="trend-content"><%- eachTrend.idea_desc %></span>
+                    </div>
+                <% }) %>
+                <div class="about">
+                    <div class="about-header">About Ideabox</div>
+                    <div class="about-content">Ideabox is an interactive social platform that connects people around the world to ingenious ideas.</div>
+                    <div class="about-footer">Created by Abolaji Femi (Andela BC-19)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="scripts/jquery-2.2.1.min.js"></script>
+<script src="scripts/globalrequest.js"></script>
+<script src="scripts/custom.js"></script>
+<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script src="scripts/markdown-it.min.js"></script>
+</body>
+</html>
