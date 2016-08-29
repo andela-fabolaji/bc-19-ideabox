@@ -2,6 +2,12 @@ var mysql = require('mysql');
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcrypt-nodejs');
 
+
+/**
+ *
+ * DbHandler class
+ *
+ */
 var DbHandler = function () {
   this.connection = mysql.createPool({
     host: '127.0.0.1',
@@ -12,18 +18,26 @@ var DbHandler = function () {
   });
   this.resHandler = {};
 
+ /**
+  * Generic method to insert query into database
+  *
+  * @param {string} table
+  * @param {object} dataSet
+  * @param {object} response
+  *
+  */
   this.insertQuery = function ( table, dataSet, res ) {
     this.resHandler = res;
     var query = 'Insert into ' + table + ' (';
     var isStartingPoint = true;
-    
+
     for ( var key in dataSet ) {
       if ( !isStartingPoint ) {
         query += ' ,';
       }
       isStartingPoint = false;
       query += key;
-    } 
+    }
     query += ') VALUES (';
     isStartingPoint = true;
     for ( var key in dataSet ) {
@@ -35,19 +49,27 @@ var DbHandler = function () {
         dataSet[key] = bcrypt.hashSync( dataSet[key] );
       }
       query += mysql.escape(dataSet[key]);
-    } 
+    }
     query += ')';
-    
+
     return query;
   }
 
+  /**
+   *
+   * Method to handle signin process
+   *
+   * @param {object} details
+   * @param {object} response
+   *
+   */
   this.signin = function ( details, response ) {
     var query = "SELECT * FROM users WHERE email = '" + details.email + "'";
     this.connection.getConnection(function ( err, connection ) {
       connection.query( query, function ( err, res ) {
         if (!err ) {
           if( res.length === 0 ){
-            response.json({status:false, msg: 'User does not exist!'});  
+            response.json({status:false, msg: 'User does not exist!'});
           } else {
             if ( bcrypt.compareSync( details.password, res[0].password ) ) {
               var token = jwt.sign({id:res[0].id}, 'key', {expiresIn: '24h'});
@@ -61,17 +83,25 @@ var DbHandler = function () {
         }
         response.end();
       });
-      connection.release();  
+      connection.release();
     });
 
   };
 
+  /**
+   *
+   * Method to handle user Registration
+   *
+   * @param {object} details
+   * @param {object} response
+   *
+   */
   this.register = function ( details, response ) {
     var query = this.insertQuery('users', details,response);
     this.connection.getConnection(function ( err, connection ) {
-      
       connection.query(query, function ( err, res ) {
         if( err ) {
+          console.log(err);
           response.json({status:false, msg:'This email already exists'})
         } else {
           var token = jwt.sign({id:res.id}, 'key', {expiresIn: '24h'});
@@ -83,6 +113,13 @@ var DbHandler = function () {
     });
   }
 
+  /**
+   *
+   * Query handler: Executes query
+   *
+   * @param {string} query
+   *
+   */
   this.executeQuery = function ( query ) {
     var instance = this;
     this.connection.getConnection(function ( err, connection ) {
@@ -98,6 +135,14 @@ var DbHandler = function () {
     });
   };
 
+  /**
+   *
+   * Method returns the result of a query
+   *
+   * @param {string} query
+   * @param {object} response
+   *
+   */
   this.getQueryData = function ( query, response ) {
     this.connection.getConnection( function ( err, connection ) {
       connection.query(query, function ( err, result ) {
@@ -108,10 +153,17 @@ var DbHandler = function () {
     });
   }
 
+  /**
+   *
+   * Method to get all fetch all ideas
+   *
+   * @param {object} response
+   *
+   */
   this.getIdeas = function ( response ) {
     var sorter = 'date';
     var query = 'SELECT *, ideas.id AS ideaId, SUM(votes.upvotes) AS upvotes, SUM(votes.downvotes) AS downvotes FROM ideas INNER JOIN users on users.id = users_id LEFT JOIN votes ON ideas.id = ideas_id GROUP BY ideas.id ORDER BY ' + this.connection.escapeId('ideas.' + sorter) + ' DESC';
-    
+
     this.connection.getConnection(function ( err, connection ) {
       connection.query(query, function ( err, result ) {
         if ( !err ) {
@@ -120,9 +172,7 @@ var DbHandler = function () {
               if(!err) {
                 response.send({ideas:result, trends:trending});
               }
-            })
-            
-          
+          });
         } else {
           response.json({
             status: false,
@@ -133,11 +183,14 @@ var DbHandler = function () {
     });
   };
 
-  this.getComments = function ( response ) {
-    var sorter = 'comment_date_time';
-    var query = 'SELECT * FROM comments '
-  };
-
+  /**
+   *
+   * Method for handling votes
+   *
+   * @param {object} data
+   * @param {object} response
+   *
+   */
   this.votes = function ( data, response ) {
     var query = 'SELECT * FROM votes WHERE users_id = ' + data.users_id + ' AND ideas_id = '+data.ideas_id;
     if ( data.type === 'upvotes' ) {
@@ -183,6 +236,14 @@ var DbHandler = function () {
     })
   }
 
+  /**
+   * Generic method for building query for update table
+   *
+   * @param {string} tableName
+   * @param {object} data
+   * @param {string} whereClause
+   *
+   */
   this.updateTable = function ( tableName, data, whereClause ) {
     var query = "UPDATE "+tableName+" SET ";
     var startFlag = true;
@@ -196,7 +257,7 @@ var DbHandler = function () {
     }
     query += ' WHERE ';
     startFlag = true;
-    
+
     for ( var key in whereClause ) {
       if( !startFlag ) {
         query += ' AND ';

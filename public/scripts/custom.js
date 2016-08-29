@@ -23,10 +23,25 @@ $(document).ready(function () {
 
   });
 
+  /**
+   *
+   * Converts markdown texts to HTML
+   * @param {string} postDetails
+   *
+   */
+  var convert = function (postDetails) {
+    var postContent = postDetails['postContent'];
+    var converter = new showdown.Converter();
+    var defaultOptions = showdown.getDefaultOptions();
+
+    postDetails['postContent'] = converter.makeHtml(postContent);
+    return postDetails;
+  };
   
   submit.click(function ( e ) {
     e.preventDefault();
 
+    //ToDO 
     if ($(this).attr('id') === 'signinBtn' ) {
       var formFields = ['email', 'password'];
       var userDetails = newRequest.formData(formFields);
@@ -50,6 +65,7 @@ $(document).ready(function () {
       }
     }
 
+    //TODO
     if ( $(this).attr('id') === 'signupBtn' ) {
       var formFields = ['fullname', 'regemail', 'regpassword', 'confirmpassword'];
       var userDetails = newRequest.formData(formFields);
@@ -79,14 +95,7 @@ $(document).ready(function () {
       }
     }
 
-    var convert = function (postDetails) {
-      var postContent = postDetails['postContent'];
-      var converter = new showdown.Converter();
-      var defaultOptions = showdown.getDefaultOptions();
-
-      postDetails['postContent'] = converter.makeHtml(postContent);
-      return postDetails;
-    };
+    
 
     if ( $(this).attr('id') === 'publish' ) {
       var formFields = ['postTitle', 'postContent'];
